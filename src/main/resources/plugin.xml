@@ -7,4 +7,8 @@
     </extension>
 
     <!-- IN-MEMORY EVALUATOR -->
+    <extension point="org.datanucleus.query_method_evaluators">
+        <query-method-evaluator method="Long.valueOf"
+            evaluator="mydomain.datanucleus.LongValueOfInMemoryEvaluator"/>
+    </extension>
 </plugin>
