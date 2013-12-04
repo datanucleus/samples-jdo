@@ -1,0 +1,267 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.datanucleus</groupId>
+    <artifactId>datanucleus-samples-jdo-tutorial</artifactId>
+    <packaging>jar</packaging>
+    <version>3.2</version>
+    <name>DataNucleus AccessPlatform Tutorial for JDO</name>
+    <url>http://www.datanucleus.org</url>
+
+    <repositories>
+	    <repository>
+            <id>DN_M2_Repo</id>
+            <name>DataNucleus Repository</name>
+            <url>http://www.datanucleus.org/downloads/maven2</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+	<pluginRepositories>
+        <pluginRepository>
+            <id>DataNucleus_2</id>
+            <url>http://www.datanucleus.org/downloads/maven2/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.datanucleus</groupId>
+            <artifactId>datanucleus-core</artifactId>
+            <version>(3.1.99, )</version>
+        </dependency>
+        <dependency>
+            <groupId>org.datanucleus</groupId>
+            <artifactId>datanucleus-api-jdo</artifactId>
+            <version>(3.1.99, )</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.jdo</groupId>
+            <artifactId>jdo-api</artifactId>
+            <version>[3.0, )</version>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>[1.2, 1.3)</version>
+        </dependency>
+
+        <!-- ENABLE THIS FOR H2 -->
+        <dependency>
+            <groupId>org.datanucleus</groupId>
+            <artifactId>datanucleus-rdbms</artifactId>
+            <version>(3.1.99, )</version>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.3.168</version>
+        </dependency>
+
+        <!-- ENABLE THIS FOR HSQLDB -->
+        <!--dependency>
+            <groupId>org.datanucleus</groupId>
+            <artifactId>datanucleus-rdbms</artifactId>
+            <version>(3.1.99, )</version>
+        </dependency>
+        <dependency>
+            <groupId>hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>1.8.0.4</version>
+        </dependency-->
+
+        <!-- ENABLE THIS FOR MYSQL -->
+        <!--dependency>
+            <groupId>org.datanucleus</groupId>
+            <artifactId>datanucleus-rdbms</artifactId>
+            <version>(3.1.99, )</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.17</version>
+        </dependency-->
+
+        <!-- ENABLE THIS FOR ODF -->
+        <!--dependency>
+            <groupId>org.datanucleus</groupId>
+            <artifactId>datanucleus-odf</artifactId>
+            <version>(3.1.99, )</version>
+        </dependency>
+        <dependency>
+            <groupId>org.odftoolkit</groupId>
+            <artifactId>odfdom-java</artifactId>
+            <version>0.8.7</version>
+        </dependency>
+        <dependency>
+            <groupId>xerces</groupId>
+            <artifactId>xercesImpl</artifactId>
+            <version>[2.8, 3.0)</version>
+        </dependency-->
+
+        <!-- ENABLE THIS FOR EXCEL -->
+        <!--dependency>
+            <groupId>org.datanucleus</groupId>
+            <artifactId>datanucleus-excel</artifactId>
+            <version>(3.1.99, )</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.6</version>
+        </dependency-->
+
+        <!-- ENABLE THIS FOR MongoDB -->
+        <!--dependency>
+            <groupId>org.datanucleus</groupId>
+            <artifactId>datanucleus-mongodb</artifactId>
+            <version>(3.1.99, )</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
+            <version>[2.5, 3.0)</version>
+        </dependency-->
+
+        <!-- ENABLE THIS FOR HBase -->
+        <!--dependency>
+            <groupId>org.datanucleus</groupId>
+            <artifactId>datanucleus-hbase</artifactId>
+            <version>(3.1.99, )</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-core</artifactId>
+            <version>1.0.3</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.codehaus.jackson</groupId>
+                    <artifactId>jackson-mapper-asl</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.codehaus.jackson</groupId>
+                    <artifactId>jackson-core-asl</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hbase</groupId>
+            <artifactId>hbase</artifactId>
+            <version>0.94.1</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>3.4.3</version>
+        </dependency-->
+
+        <!-- ENABLE THIS FOR Neo4j -->
+        <!--dependency>
+            <groupId>org.datanucleus</groupId>
+            <artifactId>datanucleus-neo4j</artifactId>
+            <version>(3.1.99, )</version>
+        </dependency>
+        <dependency>
+            <groupId>org.neo4j</groupId>
+            <artifactId>neo4j</artifactId>
+            <version>1.7.2</version>
+        </dependency-->
+
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                    <include>**/*.jdo</include>
+                    <include>**/*.orm</include>
+                    <include>**/*.properties</include>
+                </includes>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>2.4.1</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>${basedir}</directory>
+                            <includes>
+                                <include>*.log</include>
+                                <include>tutorial.ods</include>
+                                <include>tutorial.xls</include>
+                                <include>testDB</include>
+                            </includes>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <!--configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration-->
+            </plugin>
+            <plugin>
+                <groupId>org.datanucleus</groupId>
+                <artifactId>datanucleus-maven-plugin</artifactId>
+                <version>3.2.0-release</version>
+                <configuration>
+                    <api>JDO</api>
+                    <persistenceUnitName>Tutorial</persistenceUnitName>
+                    <log4jConfiguration>${basedir}/log4j.properties</log4jConfiguration>
+                    <verbose>false</verbose>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>enhance</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.1</version>
+                <configuration>
+                    <mainClass>org.datanucleus.samples.jdo.tutorial.Main</mainClass>
+                    <systemProperties>
+                        <systemProperty>
+                            <key>log4j.configuration</key>
+                            <value>file:${basedir}/log4j.properties</value>
+                        </systemProperty>
+                    </systemProperties>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.2.1</version>
+                <configuration>
+                    <descriptors>
+                        <descriptor>${basedir}/assembly.xml</descriptor>
+                    </descriptors>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jdo SYSTEM "file:/javax/jdo/jdo.dtd">
+<jdo>
+	<package name="org.datanucleus.samples.jdo.spatial">
+		<extension vendor-name="datanucleus" key="spatial-dimension" value="2"/>
+		<extension vendor-name="datanucleus" key="spatial-srid" value="4326"/>
+		<class name="Position" table="spatialpostut" detachable="true">
+			<field name="name"/>
+			<field name="point" persistence-modifier="persistent"/>
+		</class>
+	</package>
+</jdo>

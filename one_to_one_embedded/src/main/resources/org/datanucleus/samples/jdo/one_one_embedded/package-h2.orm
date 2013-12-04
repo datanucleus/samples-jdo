@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE orm SYSTEM "file:/javax/jdo/orm.dtd">
+<orm>
+    <package name="org.datanucleus.samples.jdo.one_one_embedded">
+        <class name="Account" table="Accounts">
+            <field name="firstName" column="CHRISTIAN_NAME"/>
+            <field name="lastName" column="SURNAME"/>
+            <field name="level" column="LEVEL"/>
+            <field name="login">
+                <!--embedded>
+                    <field name="login" column="LOGIN"/>
+                    <field name="password" column="PASSWD"/>
+                </embedded-->
+            </field>
+        </class>
+
+        <class name="Login" embedded-only="true">
+            <field name="login" column="LOGIN"/>
+            <field name="password" column="PWD"/>
+        </class>
+    </package>
+</orm>

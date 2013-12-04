@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<configuration> 
+  <property>
+    <name>hbase.zookeeper.quorum</name>
+    <value>localhost</value>
+    <description>The host and port that the HBase master runs at.
+    </description>
+  </property>
+</configuration>

@@ -1,0 +1,151 @@
+<!--
+===================================================================
+tutorial build
+===================================================================
+-->
+<project name="tutorial" default="compile">
+
+    <!-- environment -->
+    <property environment="env"/>
+    <property name="project.location" location="."/>
+    <property name="project.build.debug" value="on"/>
+    <property name="Name" value="tutorial"/>
+    <property name="name" value="${Name}"/>
+    <property name="version" value="3.2"/>
+
+    <!-- project workspace directories -->
+    <property name="java.dir" value="src/main/java"/>
+    <property name="resources.dir" value="src/main/resources"/>
+    <property name="lib.dir" value="lib"/>
+    <property name="classes.dir" value="target/classes"/>
+
+    <!--
+    ===================================================================
+    Classpath properties
+    ===================================================================
+    -->
+
+    <!-- the classpath for running -->
+    <path id="lib.classpath">
+        <fileset dir="${lib.dir}">
+            <include name="**/*.jar"/>
+        </fileset>
+        <pathelement location="${classes.dir}"/>
+    </path>
+
+    <!-- the classpath for the compile -->
+    <path id="compile.classpath">
+        <pathelement location="${classes.dir}"/>
+        <path refid="lib.classpath"/>
+    </path>
+
+    <!--
+    ===================================================================
+    TARGET : clean
+    ===================================================================
+    -->
+    <target name="clean">
+        <delete includeEmptyDirs="true" quiet="true">
+            <fileset dir="target"/>
+            <fileset dir="${basedir}" includes="datanucleus.log"/>
+        </delete>
+    </target>
+
+    <!--
+    ===================================================================
+    TARGET : prepare
+    ===================================================================
+    -->
+    <target name="prepare">
+        <mkdir dir="${classes.dir}"/>
+    </target>
+
+    <!--
+    ===================================================================
+    TARGET : compile.java
+    ===================================================================
+    -->
+    <target name="compile" depends="clean,prepare">
+        <echo message="==================================================================="/>
+        <echo message="Compile configuration:"/>
+        <echo message="java.dir       = ${java.dir}"/>
+        <echo message="classes.dir    = ${classes.dir}"/>
+        <echo message="==================================================================="/>
+        <javac srcdir="${java.dir}" destdir="${classes.dir}" debug="${project.build.debug}" classpathref="compile.classpath">
+            <include name="**/*.java"/>
+        </javac>
+    </target>
+
+    <!--
+    ===================================================================
+    TARGET : copy jdo metadata files
+    ===================================================================
+    -->
+    <target name="copy.metadata">
+        <copy todir="${classes.dir}">
+            <fileset dir="${resources.dir}" includes="**/*.orm"/>
+            <fileset dir="${resources.dir}" includes="**/*.xml"/>
+        </copy>
+    </target>
+
+    <!--
+    ===================================================================
+    TARGET : enhance
+    ===================================================================
+    -->
+    <target name="enhance" depends="compile,copy.metadata">
+        <!-- define the task enhancer -->
+        <taskdef name="enhancer" classname="org.datanucleus.enhancer.EnhancerTask">
+            <classpath refid="compile.classpath"/>
+        </taskdef>
+
+        <!-- enhance -->
+        <enhancer classpathref="compile.classpath"
+            dir="${classes.dir}" verbose="true" persistenceUnit="Tutorial">
+            <sysproperty key="log4j.configuration" value="file:log4j.properties"/>
+        </enhancer>
+    </target>
+
+    <!-- SchemaTool "create" -->
+    <target name="createschema">
+        <taskdef name="schematool" classname="org.datanucleus.store.schema.SchemaToolTask">
+            <classpath refid="compile.classpath"/>
+        </taskdef>
+
+        <schematool classpathref="compile.classpath"
+            failonerror="true" verbose="true" mode="create" persistenceUnit="Tutorial">
+            <sysproperty key="log4j.configuration" value="file:${basedir}/log4j.properties"/>
+        </schematool>
+    </target>
+
+    <!-- SchemaTool "delete" -->
+    <target name="deleteschema">
+        <taskdef name="schematool" classname="org.datanucleus.store.schema.SchemaToolTask">
+            <classpath refid="compile.classpath"/>
+        </taskdef>
+
+        <schematool classpathref="compile.classpath"
+            failonerror="true" fork="true" verbose="true" mode="delete" persistenceUnit="Tutorial">
+            <sysproperty key="log4j.configuration" value="file:${basedir}/log4j.properties"/>
+        </schematool>
+    </target>
+
+    <!-- SchemaTool "dbinfo" -->
+    <target name="schemainfo">
+        <taskdef name="schematool" classname="org.datanucleus.store.schema.SchemaToolTask">
+            <classpath refid="compile.classpath"/>
+        </taskdef>
+
+        <schematool classpathref="compile.classpath"
+            failonerror="true" fork="true" verbose="true" mode="dbinfo" persistenceUnit="Tutorial">
+            <sysproperty key="log4j.configuration" value="file:${basedir}/log4j.properties"/>
+        </schematool>
+    </target>
+
+    <!-- Run the Tutorial -->
+    <target name="runtutorial" description="Run the application">
+        <copy file="log4j.properties"
+              tofile="${classes.dir}/log4j.properties"/>
+        <java classname="org.datanucleus.samples.jdo.tutorial.Main" classpathref="lib.classpath" fork="true"/>
+    </target>
+</project>

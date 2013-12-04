@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE orm SYSTEM "file:/javax/jdo/orm.dtd">
+<orm>
+    <package name="org.datanucleus.samples.jdo.many_many">
+        <class name="Customer" table="CUSTOMER">
+            <datastore-identity>
+                <column name="CUST_ID"/>
+            </datastore-identity>
+            <field name="name">
+                <column name="NAME" length="100" jdbc-type="VARCHAR"/>
+            </field>
+            <field name="description">
+                <column name="DESC" length="255" jdbc-type="VARCHAR"/>
+            </field>
+            <field name="suppliers" table="CUSTOMER_SUPPLIER">
+                <join>
+                    <column name="CUST_ID"/>
+                </join>
+                <element>
+                    <column name="SUPP_ID"/>
+                </element>
+            </field>
+        </class>
+
+        <class name="Supplier" table="SUPPLIER">
+            <datastore-identity>
+                <column name="SUPP_ID"/>
+            </datastore-identity>
+            <field name="name">
+                <column name="NAME" length="100" jdbc-type="VARCHAR"/>
+            </field>
+            <field name="address">
+                <column name="ADDRESS" length="100" jdbc-type="VARCHAR"/>
+            </field>
+        </class>
+    </package>
+</orm>

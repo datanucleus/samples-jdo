@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE orm SYSTEM "file:/javax/jdo/orm.dtd">
+<orm>
+    <package name="org.datanucleus.samples.jdo.tutorial">
+        <class name="Inventory" table="Inventories">
+            <field name="name">
+                <column name="Name" length="100"/>
+            </field>
+            <field name="products"/>
+        </class>
+
+        <class name="Product" table="Products">
+            <inheritance strategy="complete-table"/>
+            <field name="id" value-strategy="increment">
+                <column name="Id"/>
+            </field>
+            <field name="name">
+                <column name="Name"/>
+            </field>
+            <field name="description">
+                <column name="Description"/>
+            </field>
+            <field name="price">
+                <column name="Price"/>
+            </field>
+        </class>
+
+        <class name="Book" table="Books">
+            <inheritance strategy="complete-table"/>
+            <field name="Product.id">
+                <column name="Id"/>
+            </field>
+            <field name="author">
+                <column name="Author"/>
+            </field>
+            <field name="isbn">
+                <column name="ISBN"/>
+            </field>
+            <field name="publisher">
+                <column name="Publisher"/>
+            </field>
+        </class>
+    </package>
+</orm>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE jdo PUBLIC "-//Sun Microsystems, Inc.//DTD Java Data Objects Metadata 2.0//EN" "http://java.sun.com/dtd/jdo_2_0.dtd">
+<jdo>
+    <package name="org.datanucleus.samples.jdo.many_many">
+        <class name="Customer" identity-type="datastore">
+            <field name="name"/>
+            <field name="description"/>
+            <field name="suppliers" persistence-modifier="persistent" mapped-by="customers">
+                <collection element-type="Supplier"/>
+                <join/>
+            </field>
+        </class>
+
+        <class name="Supplier" identity-type="datastore">
+            <field name="name"/>
+            <field name="address"/>
+            <field name="customers" persistence-modifier="persistent">
+                <collection element-type="Customer"/>
+            </field>
+        </class>
+    </package>
+</jdo>

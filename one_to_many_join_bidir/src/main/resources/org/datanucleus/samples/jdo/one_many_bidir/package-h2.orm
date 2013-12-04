@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE orm SYSTEM "file:/javax/jdo/orm.dtd">
+<orm>
+    <package name="org.datanucleus.samples.jdo.one_many_bidir">
+        <class name="Pack" table="NORMAL_PACK">
+            <field name="name">
+                <column length="100" jdbc-type="VARCHAR"/>
+            </field>
+            <field name="description">
+                <column length="255" jdbc-type="VARCHAR"/>
+            </field>
+            <field name="cards" table="NORMAL_PACK_OF_CARDS">
+                <join/>
+            </field>
+        </class>
+
+        <class name="Card" table="NORMAL_CARD">
+            <field name="suit" primary-key="true">
+                <column length="10" jdbc-type="VARCHAR"/>
+            </field>
+            <field name="number" primary-key="true">
+                <column length="20" jdbc-type="VARCHAR"/>
+            </field>
+        </class>
+    </package>
+</orm>
