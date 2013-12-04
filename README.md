@@ -1,4 +1,4 @@
 sample-jdo
 ==========
 
-Top-levle project for all samples for DataNucleus JDO usage
+Top-level project for all samples for DataNucleus JDO usage
