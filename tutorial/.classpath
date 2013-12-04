@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/local.repository/javax.jdo/jars/jdo-api-3.0.1.jar"/>
+	<classpathentry kind="lib" path="/local.repository/org.eclipse.persistence/jars/javax.persistence-2.1.0.jar" sourcepath="/usr/local/maven2-repository/org/eclipse/persistence/javax.persistence/2.1.0/javax.persistence-2.1.0-sources.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/core"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>
