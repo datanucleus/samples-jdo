@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE orm SYSTEM "file:/javax/jdo/orm.dtd">
+<orm>
+    <package name="org.datanucleus.samples.jdo.one_many_unidir">
+        <class name="Pack" table="INVERSE_PACK">
+            <field name="name">
+                <column length="100" jdbc-type="VARCHAR"/>
+            </field>
+            <field name="description">
+                <column length="255" jdbc-type="VARCHAR"/>
+            </field>
+            <field name="cards" mapped-by="pack"/>
+        </class>
+
+        <class name="Card" table="INVERSE_CARD">
+            <field name="suit">
+                <column length="10" jdbc-type="VARCHAR"/>
+            </field>
+            <field name="number">
+                <column length="20" jdbc-type="VARCHAR"/>
+            </field>
+        </class>
+    </package>
+</orm>
