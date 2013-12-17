@@ -5,8 +5,8 @@ Simple demonstration of using JDO with DataNucleus.
 You can run this with any supported datastore by simply editing the following
 files
 
-* <a href="https://github.com/datanucleus/sample-jdo/blob/master/tutorial/src/main/resources/META-INF/persistence.xml">src/main/resources/META-INF/persistence.xml</a>   **[Edit the datastore details here]**
-* <a href="https://github.com/datanucleus/sample-jdo/blob/master/tutorial/pom.xml">pom.xml</a>   **[Edit the dependency jars for your datastore]**
+* <a href="https://github.com/datanucleus/samples-jdo/blob/master/tutorial/src/main/resources/META-INF/persistence.xml">src/main/resources/META-INF/persistence.xml</a>   **[Edit the datastore details here]**
+* <a href="https://github.com/datanucleus/samples-jdo/blob/master/tutorial/pom.xml">pom.xml</a>   **[Edit the dependency jars for your datastore]**
 
 Maven Instructions
 ==================
