@@ -15,10 +15,12 @@ limitations under the License.
 Contributors:
     ...
 **********************************************************************/
-package org.datanucleus.query.evaluator.memory;
+package mydomain.datanucleus;
 
 import org.datanucleus.exceptions.NucleusException;
 import org.datanucleus.query.QueryUtils;
+import org.datanucleus.query.evaluator.memory.InMemoryExpressionEvaluator;
+import org.datanucleus.query.evaluator.memory.InvocationEvaluator;
 import org.datanucleus.query.expression.InvokeExpression;
 import org.datanucleus.query.expression.Literal;
 import org.datanucleus.query.expression.ParameterExpression;
@@ -34,8 +36,6 @@ public class LongValueOfInMemoryEvaluator implements InvocationEvaluator
      */
     public Object evaluate(InvokeExpression expr, Object invokedValue, InMemoryExpressionEvaluator eval)
     {
-        String method = expr.getOperation();
-
         if (invokedValue != null)
         {
             throw new NucleusException("Attempt to invoke Long.valueOf on " + invokedValue + " but this is a static method!");

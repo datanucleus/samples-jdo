@@ -18,7 +18,6 @@ Contributors:
 package org.datanucleus.samples;
 
 import javax.jdo.annotations.*;
-import java.util.*;
 
 /**
  * Sample class that has a String field holding a Long.

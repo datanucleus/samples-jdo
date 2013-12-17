@@ -1,7 +1,6 @@
 package org.datanucleus.test;
 
 import java.util.List;
-import java.util.Set;
 
 import org.junit.*;
 import javax.jdo.*;
