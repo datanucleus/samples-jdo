@@ -1,6 +1,7 @@
-spatial
-=======
-This requires the DataNucleus Maven2 plugin. You can download this plugin from the DataNucleus downloads area.
+geospatial
+==========
+
+This requires the DataNucleus Maven plugin. You can download this plugin from the DataNucleus downloads area.
 
 1. Set the database configuration in the "src/main/resources/META-INF/persistence.xml" file.
 
@@ -17,7 +18,3 @@ This requires the DataNucleus Maven2 plugin. You can download this plugin from t
 
 6. Run the command: "mvn datanucleus:schema-delete"
    This deletes the schema for this sample.
-
-
-
-(c) Copyright 2008-2013 DataNucleus
