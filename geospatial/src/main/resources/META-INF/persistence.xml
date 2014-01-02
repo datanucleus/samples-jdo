@@ -18,4 +18,18 @@
         </properties>
     </persistence-unit>
 
+    <persistence-unit name="MyTest-postgresql">
+        <mapping-file>org/datanucleus/samples/jdo/spatial/package.jdo</mapping-file>
+        <exclude-unlisted-classes />
+        <properties>
+            <property name="javax.jdo.option.ConnectionURL" value="jdbc:postgresql:nucleus"/>
+            <property name="javax.jdo.option.ConnectionDriverName" value="org.postgresql.Driver"/>
+            <property name="javax.jdo.option.ConnectionUserName" value="postgres"/>
+            <property name="javax.jdo.option.ConnectionPassword" value=""/>
+
+            <property name="datanucleus.autoCreateSchema" value="true"/>
+            <property name="datanucleus.autoCreateColumns" value="true"/>
+        </properties>
+    </persistence-unit>
+
 </persistence>

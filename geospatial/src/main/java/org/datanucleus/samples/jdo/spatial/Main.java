@@ -20,6 +20,8 @@ public class Main
     {
         // Create a PersistenceManagerFactory for this datastore
         PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("MyTest");
+        // Enable this instead of the line above to use PostgreSQL
+//      PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("MyTest");
 
         System.out.println("DataNucleus JDO Spatial Sample");
         System.out.println("==============================");
