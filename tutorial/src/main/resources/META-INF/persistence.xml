@@ -32,19 +32,29 @@
             <property name="javax.jdo.option.Mapping" value="mysql"/-->
 
             <!-- ENABLE THESE FOR ODF -->
-            <!--property name="javax.jdo.option.ConnectionURL" value="odf:file:tutorial.ods"/-->
+            <!--property name="javax.jdo.option.ConnectionURL" value="odf:file:tutorial.ods"/>
+            <property name="javax.jdo.option.Mapping" value="odf"/-->
 
             <!-- ENABLE THESE FOR EXCEL -->
-            <!--property name="javax.jdo.option.ConnectionURL" value="excel:file:tutorial.xls"/-->
+            <!--property name="javax.jdo.option.ConnectionURL" value="excel:file:tutorial.xls"/>
+            <property name="javax.jdo.option.Mapping" value="excel"/-->
 
             <!-- ENABLE THESE FOR MONGODB -->
-            <!--property name="javax.jdo.option.ConnectionURL" value="mongodb:/nucleus1"/-->
+            <!--property name="javax.jdo.option.ConnectionURL" value="mongodb:/nucleus1"/>
+            <property name="javax.jdo.option.Mapping" value="mongodb"/-->
 
             <!-- ENABLE THESE FOR HBASE -->
-            <!--property name="javax.jdo.option.ConnectionURL" value="hbase:"/-->
+            <!--property name="javax.jdo.option.ConnectionURL" value="hbase:"/>
+            <property name="javax.jdo.option.Mapping" value="hbase"/-->
 
             <!-- ENABLE THESE FOR NEO4J -->
-            <!--property name="javax.jdo.option.ConnectionURL" value="neo4j:testDB"/-->
+            <!--property name="javax.jdo.option.ConnectionURL" value="neo4j:testDB"/>
+            <property name="javax.jdo.option.Mapping" value="neo4j"/-->
+
+            <!-- ENABLE THESE FOR CASSANDRA -->
+            <!--property name="javax.jdo.option.ConnectionURL" value="cassandra:"/>
+            <property name="javax.jdo.mapping.Schema" value="schema1"/>
+            <property name="javax.jdo.option.Mapping" value="cassandra"/-->
 
             <property name="datanucleus.autoCreateSchema" value="true"/>
             <property name="datanucleus.validateTables" value="false"/>
