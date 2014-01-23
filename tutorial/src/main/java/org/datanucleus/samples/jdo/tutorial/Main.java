@@ -61,6 +61,10 @@ public class Main
             inventoryId = pm.getObjectId(inv);
             System.out.println("Inventory, Product and Book have been persisted");
         }
+        catch (Exception e)
+        {
+            System.out.println("Exception persisting data : " + e.getMessage());
+        }
         finally
         {
             if (tx.isActive())
@@ -127,6 +131,10 @@ public class Main
 
             tx.commit();
         }
+        catch (Exception e)
+        {
+            System.out.println("Exception performing queries : " + e.getMessage());
+        }
         finally
         {
             if (tx.isActive())
@@ -159,6 +167,10 @@ public class Main
             System.out.println("Deleted " + numberInstancesDeleted + " products");
 
             tx.commit();
+        }
+        catch (Exception e)
+        {
+            System.out.println("Exception cleaning out the database : " + e.getMessage());
         }
         finally
         {
