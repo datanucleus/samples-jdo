@@ -43,7 +43,8 @@
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-rdbms</artifactId>
-            <version>[4.0.0-m1-SNAPSHOT, 
+            <version>[4.0.0-m1-SNAPSHOT, )</version>
+        </dependency>
         <dependency>
             <groupId>javax.jdo</groupId>
             <artifactId>jdo-api</artifactId>
