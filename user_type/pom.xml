@@ -34,12 +34,12 @@
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-core</artifactId>
-            <version>[3.2.0-release, )</version>
+            <version>[3.2.0-release, 3.9)</version>
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-api-jdo</artifactId>
-            <version>[3.2.0-release, )</version>
+            <version>[3.2.0-release, 3.9)</version>
         </dependency>
         <dependency>
             <groupId>javax.jdo</groupId>
@@ -49,7 +49,7 @@
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-rdbms</artifactId>
-            <version>[3.2.0-release, )</version>
+            <version>[3.2.0-release, 3.9)</version>
         </dependency>
 
         <dependency>
@@ -125,7 +125,7 @@
             <plugin>
                 <groupId>org.datanucleus</groupId>
                 <artifactId>datanucleus-maven-plugin</artifactId>
-                <version>3.2.0-release</version>
+                <version>3.3.2</version>
                 <configuration>
                     <persistenceUnitName>MyTest</persistenceUnitName>
                     <log4jConfiguration>${basedir}/src/test/resources/log4j.properties</log4jConfiguration>
