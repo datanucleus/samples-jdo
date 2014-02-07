@@ -11,11 +11,11 @@
         <exclude-unlisted-classes/>
         <properties>
             <!-- ENABLE THESE FOR H2 -->
-            <property name="javax.jdo.option.ConnectionURL" value="jdbc:h2:mem:nucleus1"/>
+            <!--property name="javax.jdo.option.ConnectionURL" value="jdbc:h2:mem:nucleus1"/>
             <property name="javax.jdo.option.ConnectionDriverName" value="org.h2.Driver"/>
             <property name="javax.jdo.option.ConnectionUserName" value="sa"/>
             <property name="javax.jdo.option.ConnectionPassword" value=""/>
-            <property name="javax.jdo.option.Mapping" value="h2"/>
+            <property name="javax.jdo.option.Mapping" value="h2"/-->
 
             <!-- ENABLE THESE FOR HSQLDB -->
             <!--property name="javax.jdo.option.ConnectionURL" value="jdbc:hsqldb:mem:nucleus1"/>
@@ -52,9 +52,9 @@
             <property name="javax.jdo.option.Mapping" value="neo4j"/-->
 
             <!-- ENABLE THESE FOR CASSANDRA -->
-            <!--property name="javax.jdo.option.ConnectionURL" value="cassandra:"/>
+            <property name="javax.jdo.option.ConnectionURL" value="cassandra:"/>
             <property name="javax.jdo.mapping.Schema" value="schema1"/>
-            <property name="javax.jdo.option.Mapping" value="cassandra"/-->
+            <property name="javax.jdo.option.Mapping" value="cassandra"/>
 
             <property name="datanucleus.autoCreateSchema" value="true"/>
             <property name="datanucleus.validateTables" value="false"/>
