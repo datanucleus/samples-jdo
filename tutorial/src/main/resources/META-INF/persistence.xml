@@ -54,11 +54,11 @@
             <!-- ENABLE THESE FOR CASSANDRA -->
             <!--property name="javax.jdo.option.ConnectionURL" value="cassandra:"/>
             <property name="javax.jdo.mapping.Schema" value="schema1"/>
-            <property name="javax.jdo.option.Mapping" value="cassandra"/>
+            <property name="javax.jdo.option.Mapping" value="cassandra"/-->
 
             <property name="datanucleus.autoCreateSchema" value="true"/>
             <property name="datanucleus.validateTables" value="false"/>
-            <property name="datanucleus.validateConstraints" value="false"/-->
+            <property name="datanucleus.validateConstraints" value="false"/>
         </properties>
     </persistence-unit>
 
