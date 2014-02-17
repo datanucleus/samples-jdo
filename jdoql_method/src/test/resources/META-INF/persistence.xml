@@ -14,8 +14,7 @@
             <property name="javax.jdo.option.ConnectionUserName" value="sa"/>
             <property name="javax.jdo.option.ConnectionPassword" value=""/>
 
-            <property name="datanucleus.autoCreateSchema" value="true"/>
-            <property name="datanucleus.autoCreateColumns" value="true"/>
+            <property name="datanucleus.schema.autoCreateAll" value="true"/>
         </properties>
     </persistence-unit>
 
