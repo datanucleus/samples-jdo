@@ -56,9 +56,7 @@
             <property name="javax.jdo.mapping.Schema" value="schema1"/>
             <property name="javax.jdo.option.Mapping" value="cassandra"/-->
 
-            <property name="datanucleus.autoCreateSchema" value="true"/>
-            <property name="datanucleus.validateTables" value="false"/>
-            <property name="datanucleus.validateConstraints" value="false"/>
+            <property name="datanucleus.schema.autoCreateAll" value="true"/>
         </properties>
     </persistence-unit>
 
