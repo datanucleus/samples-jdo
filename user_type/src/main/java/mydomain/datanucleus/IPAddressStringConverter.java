@@ -19,12 +19,13 @@ package mydomain.datanucleus;
 
 import mydomain.usertypes.IPAddress;
 
+import org.datanucleus.store.types.converters.ColumnLengthDefiningTypeConverter;
 import org.datanucleus.store.types.converters.TypeConverter;
 
 /**
  * Converter to String type for IPAddress class.
  */
-public class IPAddressStringConverter implements TypeConverter<IPAddress, String>
+public class IPAddressStringConverter implements TypeConverter<IPAddress, String>, ColumnLengthDefiningTypeConverter
 {
     public String toDatastoreType(IPAddress ipaddr)
     {
@@ -44,5 +45,15 @@ public class IPAddressStringConverter implements TypeConverter<IPAddress, String
         }
 
         return new IPAddress(str.trim());
+    }
+
+    public int getDefaultColumnLength(int columnPosition)
+    {
+        if (columnPosition != 0)
+        {
+            return -1;
+        }
+        // An IP address can be maximum of 15 characters ("WWW.XXX.YYY.ZZZ")
+        return 15;
     }
 }

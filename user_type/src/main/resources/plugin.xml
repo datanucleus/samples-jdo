@@ -2,19 +2,12 @@
 <plugin>
     <!-- JAVA TYPES -->
     <extension point="org.datanucleus.java_type">
-        <java-type name="mydomain.usertypes.IPAddress" dfg="true" embedded="true"
-            converter-name="ipaddress-string"/>
+        <java-type name="mydomain.usertypes.IPAddress" dfg="true" embedded="true" converter-name="ipaddress-string"/>
     </extension>
 
     <!-- TYPE CONVERTERS -->
     <extension point="org.datanucleus.type_converter">
         <type-converter name="ipaddress-string" member-type="mydomain.usertypes.IPAddress" datastore-type="java.lang.String"
             converter-class="mydomain.datanucleus.IPAddressStringConverter"/>
-    </extension>
-
-    <!-- MAPPING, FOR RDBMS -->
-    <extension point="org.datanucleus.store_mapping">
-        <mapping java-type="mydomain.usertypes.IPAddress" 
-            mapping-class="mydomain.datanucleus.IPAddressMapping"/>
     </extension>
 </plugin>
