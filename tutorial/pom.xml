@@ -160,7 +160,7 @@
         <dependency>
             <groupId>org.neo4j</groupId>
             <artifactId>neo4j</artifactId>
-            <version>1.7.2</version>
+            <version>1.9.4</version>
         </dependency-->
 
         <!-- ENABLE THIS FOR Cassandra -->
@@ -177,22 +177,10 @@
     </dependencies>
 
     <build>
-        <resources>
-            <resource>
-                <directory>${basedir}/src/main/resources</directory>
-                <includes>
-                    <include>**/*.xml</include>
-                    <include>**/*.jdo</include>
-                    <include>**/*.orm</include>
-                    <include>**/*.properties</include>
-                </includes>
-            </resource>
-        </resources>
-
         <plugins>
             <plugin>
                 <artifactId>maven-clean-plugin</artifactId>
-                <version>2.4.1</version>
+                <version>2.5</version>
                 <configuration>
                     <filesets>
                         <fileset>
@@ -201,13 +189,14 @@
                                 <include>*.log</include>
                                 <include>tutorial.ods</include>
                                 <include>tutorial.xls</include>
-                                <include>testDB</include>
                             </includes>
+                        </fileset>
+                        <fileset>
+                            <directory>${basedir}/testDB</directory>
                         </fileset>
                     </filesets>
                 </configuration>
             </plugin>
-
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.3.2</version>
