@@ -208,7 +208,7 @@
                 <configuration>
                     <api>JDO</api>
                     <persistenceUnitName>Tutorial</persistenceUnitName>
-                    <log4jConfiguration>${basedir}/log4j.properties</log4jConfiguration>
+                    <log4jConfiguration>src/main/resources/log4j.properties</log4jConfiguration>
                     <verbose>false</verbose>
                 </configuration>
                 <executions>
@@ -229,7 +229,7 @@
                     <systemProperties>
                         <systemProperty>
                             <key>log4j.configuration</key>
-                            <value>file:${basedir}/log4j.properties</value>
+                            <value>file:src/main/resources/log4j.properties</value>
                         </systemProperty>
                     </systemProperties>
                 </configuration>
