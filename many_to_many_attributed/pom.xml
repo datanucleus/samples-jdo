@@ -9,41 +9,21 @@
     <name>DataNucleus AccessPlatform JDO Many-to-Many Attributed Relation Sample</name>
     <url>http://www.datanucleus.org</url>
 
-    <repositories>
-        <repository>
-            <id>DN_M2_Repo</id>
-            <name>DataNucleus Repository</name>
-            <url>http://www.datanucleus.org/downloads/maven2</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>DataNucleus_2</id>
-            <url>http://www.datanucleus.org/downloads/maven2/</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
-
     <dependencies>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-core</artifactId>
-            <version>[4.0.0-m1-SNAPSHOT, )</version>
+            <version>[4.0.0-m4, )</version>
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-api-jdo</artifactId>
-            <version>[4.0.0-m1-SNAPSHOT, )</version>
+            <version>[4.0.0-m4, )</version>
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-rdbms</artifactId>
-            <version>[4.0.0-m1-SNAPSHOT, )</version>
+            <version>[4.0.0-m4, )</version>
         </dependency>
         <dependency>
             <groupId>javax.jdo</groupId>
@@ -94,14 +74,14 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.3.2</version>
                 <configuration>
-                    <source>1.5</source>
-                    <target>1.5</target>
+                    <source>1.7</source>
+                    <target>1.7</target>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.datanucleus</groupId>
                 <artifactId>datanucleus-maven-plugin</artifactId>
-                <version>4.0.0-m1-SNAPSHOT</version>
+                <version>4.0.0-m3</version>
                 <configuration>
                     <persistenceUnitName>MyTest</persistenceUnitName>
                     <log4jConfiguration>${basedir}/src/main/resources/log4j.properties</log4jConfiguration>

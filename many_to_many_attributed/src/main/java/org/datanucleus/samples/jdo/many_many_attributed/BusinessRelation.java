@@ -22,11 +22,17 @@ import java.util.StringTokenizer;
 
 import javax.jdo.identity.LongIdentity;
 
+//@PersistenceCapable
 public class BusinessRelation
 {
+    //@PrimaryKey
     private Customer customer;
+
+    //@PrimaryKey
     private Supplier supplier;
+
     private String relationLevel;
+
     private String meetingLocation;
 
     public BusinessRelation(Customer cust, Supplier supp, String level, String meeting)

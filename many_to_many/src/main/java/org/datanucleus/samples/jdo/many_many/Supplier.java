@@ -20,10 +20,13 @@ package org.datanucleus.samples.jdo.many_many;
 import java.util.Collection;
 import java.util.HashSet;
 
+//@PersistenceCapable
 public class Supplier
 {
     String name = null;
+
     String address = null;
+
     Collection customers = new HashSet();
 
     public Supplier(String name,String address)

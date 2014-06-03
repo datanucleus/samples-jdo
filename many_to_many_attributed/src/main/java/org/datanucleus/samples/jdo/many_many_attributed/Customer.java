@@ -20,10 +20,15 @@ package org.datanucleus.samples.jdo.many_many_attributed;
 import java.util.HashSet;
 import java.util.Set;
 
+//@PersistenceCapable
 public class Customer
 {
+    //@PrimaryKey
     long id;
+
     String name = null;
+
+    //@Persistent(mappedBy="customer")
     Set<BusinessRelation> supplierRelations = new HashSet();
 
     public Customer(String name)

@@ -20,10 +20,14 @@ package org.datanucleus.samples.jdo.many_many;
 import java.util.Collection;
 import java.util.HashSet;
 
+//@PersistenceCapable
 public class Customer
 {
     String name = null;
+
     String description = null;
+
+    //@Persistent(mappedBy="customers")
     Collection suppliers = new HashSet();
 
     public Customer(String name, String desc)
