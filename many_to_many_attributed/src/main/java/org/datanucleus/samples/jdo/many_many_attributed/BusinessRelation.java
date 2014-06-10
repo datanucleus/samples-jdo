@@ -20,7 +20,7 @@ package org.datanucleus.samples.jdo.many_many_attributed;
 import java.io.Serializable;
 import java.util.StringTokenizer;
 
-import javax.jdo.identity.LongIdentity;
+import org.datanucleus.identity.LongId;
 
 //@PersistenceCapable
 public class BusinessRelation
@@ -69,8 +69,8 @@ public class BusinessRelation
      */
     public static class PK implements Serializable
     {
-        public LongIdentity customer; // Use same name as field above
-        public LongIdentity supplier; // Use same name as field above
+        public LongId customer; // Use same name as field above
+        public LongId supplier; // Use same name as field above
 
         public PK()
         {
@@ -79,8 +79,8 @@ public class BusinessRelation
         public PK(String s)
         {
             StringTokenizer st = new StringTokenizer(s, "::");
-            this.customer = new LongIdentity(Customer.class, st.nextToken());
-            this.supplier = new LongIdentity(Supplier.class, st.nextToken());
+            this.customer = new LongId(Customer.class, st.nextToken());
+            this.supplier = new LongId(Supplier.class, st.nextToken());
         }
 
         public String toString()
