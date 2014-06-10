@@ -3,7 +3,7 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.datanucleus</groupId>
-    <artifactId>datanucleus-samples-jdoql-method</artifactId>
+    <artifactId>datanucleus-samples-jdo-jdoql-method</artifactId>
     <packaging>jar</packaging>
     <version>4.0</version>
     <name>DataNucleus AccessPlatform JDOQL Method Sample</name>
