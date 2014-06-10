@@ -20,8 +20,6 @@ package org.datanucleus.samples.jdo.many_many_attributed;
 import java.io.Serializable;
 import java.util.StringTokenizer;
 
-import org.datanucleus.identity.LongId;
-
 //@PersistenceCapable
 public class BusinessRelation
 {
@@ -69,8 +67,8 @@ public class BusinessRelation
      */
     public static class PK implements Serializable
     {
-        public LongId customer; // Use same name as field above
-        public LongId supplier; // Use same name as field above
+        public Customer.PK customer; // Use same name as field above
+        public Supplier.PK supplier; // Use same name as field above
 
         public PK()
         {
@@ -78,14 +76,14 @@ public class BusinessRelation
 
         public PK(String s)
         {
-            StringTokenizer st = new StringTokenizer(s, "::");
-            this.customer = new LongId(Customer.class, st.nextToken());
-            this.supplier = new LongId(Supplier.class, st.nextToken());
+            StringTokenizer st = new StringTokenizer(s, "--");
+            this.customer = new Customer.PK(st.nextToken());
+            this.supplier = new Supplier.PK(st.nextToken());
         }
 
         public String toString()
         {
-            return (customer.toString() + "::" + supplier.toString());
+            return (customer.toString() + "--" + supplier.toString());
         }
 
         public int hashCode()

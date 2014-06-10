@@ -22,13 +22,15 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Transaction;
 
+import org.datanucleus.util.NucleusLogger;
+
 public class Main
 {
     public static void main(String[] args)
     {
         System.out.println("DataNucleus Samples : M-N Relation (attributed)");
         System.out.println("===============================================");
-        PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+        PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("MyTest");
 
         Customer cust1 = null;
         Customer cust2 = null;
@@ -39,6 +41,7 @@ public class Main
         // Persist some objects
         System.out.println(">> Persisting some Customers and Suppliers");
         PersistenceManager pm = pmf.getPersistenceManager();
+        pm.getFetchPlan().setGroup("all");
         Transaction tx = pm.currentTransaction();
         try
         {
@@ -61,7 +64,7 @@ public class Main
         }
         catch (Exception e)
         {
-            e.printStackTrace();
+            NucleusLogger.GENERAL.error(">> Exception in persist", e);
             System.exit(1);
         }
         finally
@@ -88,6 +91,7 @@ public class Main
 
         pm = pmf.getPersistenceManager();
         tx = pm.currentTransaction();
+        pm.getFetchPlan().setGroup("all");
         try
         {
             tx.begin();
@@ -101,7 +105,7 @@ public class Main
         }
         catch (Exception e)
         {
-            e.printStackTrace();
+            NucleusLogger.GENERAL.error(">> Exception in reattach", e);
             System.exit(2);
         }
         finally

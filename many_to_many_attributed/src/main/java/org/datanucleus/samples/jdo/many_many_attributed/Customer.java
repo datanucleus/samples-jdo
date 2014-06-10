@@ -17,13 +17,13 @@ Contributors:
 **********************************************************************/
 package org.datanucleus.samples.jdo.many_many_attributed;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 //@PersistenceCapable
 public class Customer
 {
-    //@PrimaryKey
     long id;
 
     String name = null;
@@ -59,5 +59,49 @@ public class Customer
     public String toString()
     {
         return "Customer : " + name + " - " + supplierRelations.size() + " suppliers";
+    }
+
+    public static class PK implements Serializable
+    {
+        public long id;
+
+        public PK()
+        {
+        }
+
+        public PK(java.lang.String str)
+        {
+            java.util.StringTokenizer token = new java.util.StringTokenizer(str, "::");
+            token.nextToken(); // Class name
+            this.id = Long.valueOf(token.nextToken());
+        }
+
+        public java.lang.String toString()
+        {
+            return Customer.class.getName() + "::" + java.lang.String.valueOf(this.id);
+        }
+
+        public int hashCode()
+        {
+            return (int) id;
+        }
+
+        public boolean equals(Object o)
+        {
+            if (this == o)
+            {
+                return true;
+            }
+            if (o == null)
+            {
+                return false;
+            }
+            if (o.getClass() != getClass())
+            {
+                return false;
+            }
+            PK objToCompare = (PK) o;
+            return ((this.id == objToCompare.id));
+        }
     }
 }

@@ -4,7 +4,7 @@
 "http://java.sun.com/dtd/jdo_2_0.dtd">
 <jdo>
     <package name="org.datanucleus.samples.jdo.many_many_attributed">
-        <class name="Customer" detachable="true" table="CUSTOMER">
+        <class name="Customer" detachable="true" table="CUSTOMER" objectid-class="Customer$PK">
             <field name="id" primary-key="true" value-strategy="increment" column="ID"/>
             <field name="name" column="NAME"/>
             <field name="supplierRelations" persistence-modifier="persistent" mapped-by="customer">
@@ -12,7 +12,7 @@
             </field>
         </class>
 
-        <class name="Supplier" detachable="true" table="SUPPLIER">
+        <class name="Supplier" detachable="true" table="SUPPLIER" objectid-class="Supplier$PK">
             <field name="id" primary-key="true" value-strategy="increment" column="ID"/>
             <field name="name" column="NAME"/>
             <field name="customerRelations" persistence-modifier="persistent" mapped-by="supplier">

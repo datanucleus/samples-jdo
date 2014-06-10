@@ -17,13 +17,13 @@ Contributors:
 **********************************************************************/
 package org.datanucleus.samples.jdo.many_many_attributed;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 //@PersistenceCapable
 public class Supplier
 {
-    //@PrimaryKey
     long id;
 
     String name = null;
@@ -43,26 +43,86 @@ public class Supplier
 
     public void addRelation(BusinessRelation rel)
     {
+        if (customerRelations == null)
+        {
+            customerRelations = new HashSet<BusinessRelation>();
+        }
         customerRelations.add(rel);
     }
 
     public void removeRelation(BusinessRelation rel)
     {
+        if (customerRelations == null)
+        {
+            return;
+        }
         customerRelations.remove(rel);
     }
 
     public Set<BusinessRelation> getRelations()
     {
+        if (customerRelations == null)
+        {
+            customerRelations = new HashSet<BusinessRelation>();
+        }
         return customerRelations;
     }
 
     public int getNumberOfRelations()
     {
+        if (customerRelations == null)
+        {
+            return 0;
+        }
         return customerRelations.size();
     }
 
     public String toString()
     {
         return "Supplier : " + name + " - " + customerRelations.size() + " customers";
+    }
+
+    public static class PK implements Serializable
+    {
+        public long id;
+
+        public PK()
+        {
+        }
+
+        public PK(java.lang.String str)
+        {
+            java.util.StringTokenizer token = new java.util.StringTokenizer(str, "::");
+            token.nextToken(); // Class name
+            this.id = Long.valueOf(token.nextToken());
+        }
+
+        public java.lang.String toString()
+        {
+            return Supplier.class.getName() + "::" + java.lang.String.valueOf(this.id);
+        }
+
+        public int hashCode()
+        {
+            return (int) id;
+        }
+
+        public boolean equals(Object o)
+        {
+            if (this == o)
+            {
+                return true;
+            }
+            if (o == null)
+            {
+                return false;
+            }
+            if (o.getClass() != getClass())
+            {
+                return false;
+            }
+            PK objToCompare = (PK) o;
+            return ((this.id == objToCompare.id));
+        }
     }
 }

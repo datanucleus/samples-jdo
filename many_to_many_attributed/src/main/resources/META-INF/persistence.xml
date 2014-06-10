@@ -14,6 +14,7 @@
             <property name="javax.jdo.option.ConnectionPassword" value=""/>
             <property name="javax.jdo.option.Mapping" value="h2"/>
 
+            <property name="datanucleus.DetachAllOnCommit" value="true"/>
             <property name="datanucleus.schema.autoCreateAll" value="true"/>
         </properties>
     </persistence-unit>
