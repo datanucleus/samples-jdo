@@ -19,12 +19,12 @@ package mydomain.datanucleus;
 
 import org.datanucleus.exceptions.NucleusException;
 import org.datanucleus.query.QueryUtils;
-import org.datanucleus.query.evaluator.memory.InMemoryExpressionEvaluator;
-import org.datanucleus.query.evaluator.memory.InvocationEvaluator;
 import org.datanucleus.query.expression.InvokeExpression;
 import org.datanucleus.query.expression.Literal;
 import org.datanucleus.query.expression.ParameterExpression;
 import org.datanucleus.query.expression.PrimaryExpression;
+import org.datanucleus.query.inmemory.InMemoryExpressionEvaluator;
+import org.datanucleus.query.inmemory.InvocationEvaluator;
 
 /**
  * Evaluator for the method "Long.valueOf({stringExpr})".
