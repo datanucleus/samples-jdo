@@ -63,6 +63,7 @@ public class Customer
 
     public static class PK implements Serializable
     {
+        private static final long serialVersionUID = 7596143906460627568L;
         public long id;
 
         public PK()

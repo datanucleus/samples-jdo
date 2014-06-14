@@ -84,6 +84,7 @@ public class Supplier
 
     public static class PK implements Serializable
     {
+        private static final long serialVersionUID = -4093751077746226151L;
         public long id;
 
         public PK()

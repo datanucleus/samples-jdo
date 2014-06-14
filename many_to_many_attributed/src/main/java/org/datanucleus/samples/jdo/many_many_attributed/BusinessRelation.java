@@ -67,6 +67,7 @@ public class BusinessRelation
      */
     public static class PK implements Serializable
     {
+        private static final long serialVersionUID = 6523985844759937342L;
         public Customer.PK customer; // Use same name as field above
         public Supplier.PK supplier; // Use same name as field above
 
