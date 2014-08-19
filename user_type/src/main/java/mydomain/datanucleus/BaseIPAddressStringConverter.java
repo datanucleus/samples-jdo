@@ -1,5 +1,5 @@
 /**********************************************************************
-Copyright (c) 2011 Andy Jefferson and others. All rights reserved.
+Copyright (c) 2014 Andy Jefferson and others. All rights reserved.
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
@@ -19,23 +19,32 @@ package mydomain.datanucleus;
 
 import mydomain.usertypes.IPAddress;
 
-import org.datanucleus.store.types.converters.ColumnLengthDefiningTypeConverter;
 import org.datanucleus.store.types.converters.TypeConverter;
 
 /**
- * Converter to String type for IPAddress class when handling IPv4 addresses.
+ * Base class for converter to String type for IPAddress class.
  */
-public class IPAddressStringConverter extends BaseIPAddressStringConverter implements TypeConverter<IPAddress, String>, ColumnLengthDefiningTypeConverter
+public abstract class BaseIPAddressStringConverter implements TypeConverter<IPAddress, String>
 {
-    private static final long serialVersionUID = 3190035385743247391L;
+    private static final long serialVersionUID = -4121349057012405220L;
 
-    public int getDefaultColumnLength(int columnPosition)
+    public String toDatastoreType(IPAddress ipaddr)
     {
-        if (columnPosition != 0)
+        if (ipaddr == null)
         {
-            return -1;
+            return null;
         }
-        // An IP address can be maximum of 15 characters ("WWW.XXX.YYY.ZZZ")
-        return 15;
+
+        return ipaddr.toString();
+    }
+
+    public IPAddress toMemberType(String str)
+    {
+        if (str == null)
+        {
+            return null;
+        }
+
+        return new IPAddress(str.trim());
     }
 }

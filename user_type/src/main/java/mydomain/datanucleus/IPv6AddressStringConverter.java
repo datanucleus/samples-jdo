@@ -1,5 +1,5 @@
 /**********************************************************************
-Copyright (c) 2011 Andy Jefferson and others. All rights reserved.
+Copyright (c) 2014 Andy Jefferson and others. All rights reserved.
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
@@ -23,11 +23,11 @@ import org.datanucleus.store.types.converters.ColumnLengthDefiningTypeConverter;
 import org.datanucleus.store.types.converters.TypeConverter;
 
 /**
- * Converter to String type for IPAddress class when handling IPv4 addresses.
+ * Converter to String type for IPAddress class when handling IPv6 addresses.
  */
-public class IPAddressStringConverter extends BaseIPAddressStringConverter implements TypeConverter<IPAddress, String>, ColumnLengthDefiningTypeConverter
+public class IPv6AddressStringConverter extends BaseIPAddressStringConverter implements TypeConverter<IPAddress, String>, ColumnLengthDefiningTypeConverter
 {
-    private static final long serialVersionUID = 3190035385743247391L;
+    private static final long serialVersionUID = 7201818610115046601L;
 
     public int getDefaultColumnLength(int columnPosition)
     {
@@ -35,7 +35,7 @@ public class IPAddressStringConverter extends BaseIPAddressStringConverter imple
         {
             return -1;
         }
-        // An IP address can be maximum of 15 characters ("WWW.XXX.YYY.ZZZ")
-        return 15;
+        // An IP address can be maximum of 23 characters ("UUU.VVV.WWW.XXX.YYY.ZZZ")
+        return 23;
     }
 }

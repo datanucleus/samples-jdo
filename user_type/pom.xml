@@ -13,12 +13,12 @@
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-core</artifactId>
-            <version>[4.0.0-m4, )</version>
+            <version>[4.0.0-release, )</version>
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-api-jdo</artifactId>
-            <version>[4.0.0-m4, )</version>
+            <version>[4.0.0-release, )</version>
         </dependency>
         <dependency>
             <groupId>javax.jdo</groupId>
@@ -28,7 +28,7 @@
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-rdbms</artifactId>
-            <version>[4.0.0-m4, )</version>
+            <version>[4.0.0-release, )</version>
         </dependency>
 
         <dependency>
