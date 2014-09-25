@@ -19,7 +19,7 @@
             <field name="number">
                 <column length="20" jdbc-type="VARCHAR"/>
             </field>
-            <field name="pack"/>
+            <field name="pack" column="PACK_ID"/>
         </class>
     </package>
 </orm>
