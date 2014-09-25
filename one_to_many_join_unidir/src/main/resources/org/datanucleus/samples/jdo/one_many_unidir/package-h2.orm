@@ -10,16 +10,20 @@
                 <column length="255" jdbc-type="VARCHAR"/>
             </field>
             <field name="cards" table="NORMAL_PACK_OF_CARDS">
-                <join/>
+                <join column="PACK_ID"/>
+                <element>
+                    <column name="CARD_NUMBER" target="CARD_NUMBER"/>
+                    <column name="CARD_SUIT" target="CARD_SUIT"/>
+                </element>
             </field>
         </class>
 
         <class name="Card" table="NORMAL_CARD">
             <field name="suit" primary-key="true">
-                <column length="10" jdbc-type="VARCHAR"/>
+                <column length="10" jdbc-type="VARCHAR" name="CARD_SUIT"/>
             </field>
             <field name="number" primary-key="true">
-                <column length="20" jdbc-type="VARCHAR"/>
+                <column length="20" jdbc-type="VARCHAR" name="CARD_NUMBER"/>
             </field>
         </class>
     </package>

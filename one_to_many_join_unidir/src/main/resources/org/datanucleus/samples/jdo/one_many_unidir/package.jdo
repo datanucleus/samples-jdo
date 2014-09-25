@@ -9,6 +9,7 @@
                 <collection element-type="Card"/>
             </field>
         </class>
+
         <class name="Card" identity-type="application" objectid-class="Card$CardKey">
             <field name="suit" primary-key="true"/>
             <field name="number" primary-key="true"/>
