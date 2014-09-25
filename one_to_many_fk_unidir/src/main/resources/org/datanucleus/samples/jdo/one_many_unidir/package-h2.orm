@@ -9,7 +9,9 @@
             <field name="description">
                 <column length="255" jdbc-type="VARCHAR"/>
             </field>
-            <field name="cards" mapped-by="pack"/>
+            <field name="cards">
+                <element column="PACK_ID"/>
+            </field>
         </class>
 
         <class name="Card" table="INVERSE_CARD">
