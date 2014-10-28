@@ -1,0 +1,194 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.datanucleus</groupId>
+    <artifactId>datanucleus-samples-osgi-jdo</artifactId>
+    <version>4.0</version>
+    <name>DataNucleus Samples : OSGi demo for JDO</name>
+    <packaging>bundle</packaging>
+
+    <repositories>
+        <repository>
+            <id>spring-releases</id>
+            <name>Spring Maven RELEASE Repository</name>
+            <url>http://maven.springframework.org/release</url>
+        </repository>
+        <repository>
+            <id>com.springsource.repository.bundles.release</id>
+            <name>SpringSource Enterprise Bundle Repository - SpringSource Bundle Releases</name>
+            <url>http://repository.springsource.com/maven/bundles/release</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>warn</checksumPolicy>
+            </releases>
+        </repository>
+        <repository>
+            <id>com.springsource.repository.bundles.external</id>
+            <name>SpringSource Enterprise Bundle Repository - External Bundle Releases</name>
+            <url>http://repository.springsource.com/maven/bundles/external</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>warn</checksumPolicy>
+            </releases>
+        </repository>
+        <repository>
+            <id>com.springsource.repository.libraries.release</id>
+            <name>SpringSource Enterprise Bundle Repository - SpringSource Library Releases</name>
+            <url>http://repository.springsource.com/maven/libraries/release</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>warn</checksumPolicy>
+            </releases>
+        </repository>
+        <repository>
+            <id>com.springsource.repository.libraries.external</id>
+            <name>SpringSource Enterprise Bundle Repository - External Library Releases</name>
+            <url>http://repository.springsource.com/maven/libraries/external</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>warn</checksumPolicy>
+            </releases>
+        </repository>
+    </repositories>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.0.2</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+            
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+                <version>1.4.3</version>
+                <configuration>
+                    <instructions>
+                        <manifestLocation>META-INF</manifestLocation>
+                        <Import-Package>
+                            org.osgi.framework;version="1.5",
+                            javax.*,
+                            org.w3c.dom,
+                            org.xml.sax,
+                            org.apache.log4j,
+                            org.springframework.beans;version="[3.0,4)",
+                            org.springframework.beans.factory.annotation;version="[3.0,4)",
+                            org.springframework.context;version="[3.0,4)",
+                            org.springframework.context.weaving;version="[3.0,4)",
+                            org.springframework.core;version="[3.0,4)",
+                            org.springframework.core.io;version="[3.0,4)",
+                            org.springframework.stereotype;version="[3.0,4)",
+                            org.springframework.osgi.context;version="1.2.1",
+                            org.springframework.osgi.service.importer;version="1.2.1",
+                            org.springframework.osgi.util;version="1.2.1",
+                            javax.jdo;version=3.1-rc1,
+                            javax.jdo.annotations;version=3.1-rc1,
+                            javax.jdo.datastore;version=3.1-rc1,
+                            javax.jdo.identity;version=3.1-rc1,
+                            javax.jdo.listener;version=3.1-rc1,
+                            javax.jdo.metadata;version=3.1-rc1,
+                            javax.jdo.spi;version=3.1-rc1,
+                            org.datanucleus.util;version=4.0.0.release,
+                            com.mysql.jdbc,
+                            com.mysql.jdbc.exceptions
+                        </Import-Package>
+                        <Import-Bundle>
+                            com.springsource.com.mysql.jdbc;version="[5.1.6,5.1.6]"
+                        </Import-Bundle>
+                        <Export-Package>
+                            org.datanucleus.samples.osgi.jdo.*
+                        </Export-Package>
+                        <Bundle-Vendor>DataNucleus</Bundle-Vendor>
+                    </instructions>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.datanucleus</groupId>
+                <artifactId>datanucleus-maven-plugin</artifactId>
+                <version>4.0.0-release</version>
+                <configuration>
+                    <api>JDO</api>
+                    <persistenceUnitName>PU</persistenceUnitName>
+                    <fork>false</fork>
+                    <log4jConfiguration>${basedir}/target/classes/log4j.properties</log4jConfiguration>
+                    <verbose>false</verbose>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>enhance</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.2.1</version>
+                <configuration>
+                    <descriptors>
+                        <descriptor>${basedir}/assembly.xml</descriptor>
+                    </descriptors>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.datanucleus</groupId>
+            <artifactId>datanucleus-core</artifactId>
+            <version>[4.0.0-release, )</version>
+        </dependency>
+        <dependency>
+            <groupId>org.datanucleus</groupId>
+            <artifactId>datanucleus-rdbms</artifactId>
+            <version>[4.0.0-release, )</version>
+        </dependency>
+        <dependency>
+            <groupId>org.datanucleus</groupId>
+            <artifactId>datanucleus-api-jdo</artifactId>
+            <version>[4.0.0-release, )</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.jdo</groupId>
+            <artifactId>jdo-api</artifactId>
+            <version>3.1-rc1</version>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>3.0.0.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.felix</groupId>
+            <artifactId>org.osgi.core</artifactId>
+            <version>1.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.mysql.jdbc</groupId>
+            <artifactId>com.springsource.com.mysql.jdbc</artifactId>
+            <version>5.1.6</version>
+        </dependency>
+    </dependencies>
+</project>
