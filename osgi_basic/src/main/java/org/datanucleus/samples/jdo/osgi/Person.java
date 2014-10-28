@@ -24,7 +24,9 @@ import javax.jdo.annotations.PrimaryKey;
 @PersistenceCapable
 public class Person implements Serializable
 {
- 	@PrimaryKey
+    private static final long serialVersionUID = -6683657819521508894L;
+
+    @PrimaryKey
     private long id;
     
     private String name;
