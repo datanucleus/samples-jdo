@@ -87,7 +87,6 @@
                             org.datanucleus.api.jdo;version="4.0.0.release",
                         </Import-Package>
                         <Export-Package>
-                            org.datanucleus.osgi.*,
                             org.datanucleus.samples.jdo.osgi.*
                         </Export-Package>
                         <Bundle-Vendor>DataNucleus</Bundle-Vendor>

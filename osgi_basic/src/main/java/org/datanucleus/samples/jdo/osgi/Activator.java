@@ -4,15 +4,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.jdo.JDOHelper;
+import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
+import javax.jdo.Transaction;
 
 import org.datanucleus.api.jdo.JDOPersistenceManagerFactory;
+import org.datanucleus.util.NucleusLogger;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
 public class Activator implements BundleActivator
 {
+    private int MAX_NUM_ITERATIONS = 10; 
+
     BundleContext bundleContext = null;
     PersistenceManagerFactory pmf = null;
 
@@ -34,10 +39,41 @@ public class Activator implements BundleActivator
         props.put("javax.jdo.option.ConnectionPassword", "");
         props.put("datanucleus.autoCreateSchema", "true");
         props.put("datanucleus.autoCreateColumns", "true");
-        System.out.println("Activator.start props=" + props);
+        System.out.println("JDO:OSGi.start props=" + props);
 
         pmf = JDOHelper.getPersistenceManagerFactory(props, JDOPersistenceManagerFactory.class.getClassLoader());
-        System.out.println("Activator - PMF created");
+        PersistenceManager pm = pmf.getPersistenceManager();
+        System.out.println("JDO:OSGi.start - PM created");
+
+        Transaction tx = pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            Person p;
+            for (int i=0; i<MAX_NUM_ITERATIONS; i++)
+            {
+                p = new Person(i, "Name"+i, "Address"+i, 20+i);
+                pm.makePersistent(p);
+            }
+            tx.commit();
+            System.out.println("JDO:OSGi.start - " + MAX_NUM_ITERATIONS + " Person objects have been persisted");
+        }
+        catch (Exception e)
+        {
+            NucleusLogger.GENERAL.info(">> Exception in query", e);
+            e.printStackTrace();
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+            System.out.println("JDO:OSGi.start - PM closed");
+        }
+
+        System.out.println("JDO:OSGi.start - completed");
     }
 
     private ClassLoader getClassLoader() 
@@ -47,7 +83,6 @@ public class Activator implements BundleActivator
 
         for (int x = 0; x < bundles.length; x++) 
         {
-            System.out.println(">> bundle.name=" + bundles[x].getSymbolicName());
             if (bundles[x].getSymbolicName().startsWith("org.datanucleus.api.jdo")) 
             {
                 try 
