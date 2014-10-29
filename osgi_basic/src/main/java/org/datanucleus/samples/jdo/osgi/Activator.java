@@ -23,7 +23,7 @@ public class Activator implements BundleActivator
 
     public void start(BundleContext bundleContext)
     {
-        System.out.println("Activator.start Creating PMF");
+        System.out.println("JDO:OSGi.start Creating PMF");
         this.bundleContext = bundleContext;
 
         ClassLoader cl = getClassLoader();
@@ -39,7 +39,6 @@ public class Activator implements BundleActivator
         props.put("javax.jdo.option.ConnectionPassword", "");
         props.put("datanucleus.autoCreateSchema", "true");
         props.put("datanucleus.autoCreateColumns", "true");
-        System.out.println("JDO:OSGi.start props=" + props);
 
         pmf = JDOHelper.getPersistenceManagerFactory(props, JDOPersistenceManagerFactory.class.getClassLoader());
         PersistenceManager pm = pmf.getPersistenceManager();
@@ -102,7 +101,7 @@ public class Activator implements BundleActivator
 
     public void stop(BundleContext bundleContext)
     {
-        System.out.println("Activator.stop Closing PMF");
+        System.out.println("JDO:OSGi.stop Closing PMF");
         if (pmf != null && !pmf.isClosed())
         {
             pmf.close();
