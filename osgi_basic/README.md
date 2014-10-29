@@ -18,15 +18,17 @@ osgi_basic
 
 4. If you do a "list" in the karaf console you will now get something like
 
-    karaf@root> list  
-    START LEVEL 100 , List Threshold: 50  
-       ID   State         Blueprint      Level  Name  
-    [  50] [Active     ] [            ] [   80] Java Data Objects (3.1-rc1)  
-    [  51] [Active     ] [            ] [   80] Apache Log4j (1.2.17)  
-    [  53] [Active     ] [            ] [   80] H2 Database Engine (1.3.168)  
-    [  54] [Active     ] [            ] [   80] DataNucleus Core ({version})  
-    [  55] [Active     ] [Created     ] [   80] DataNucleus JDO API ({version})  
-    [  56] [Active     ] [            ] [   80] DataNucleus RDBMS ({version})  
-    [  57] [Active     ] [            ] [   80] datanucleus-samples-osgi-jdo (4.0)  
+    karaf@root> list
+
+    START LEVEL 100 , List Threshold: 50
+    ID | State    | Lvl | Version        | Name                                   
+    ------------------------------------------------------------------------------
+    64 | Active   |  80 | 1.3.168        | H2 Database Engine                     
+    65 | Active   |  80 | 1.2.17         | Apache Log4j                           
+    66 | Active   |  80 | 4.0.4.SNAPSHOT | DataNucleus Core                       
+    67 | Active   |  80 | 3.1.0.rc1      | JDO API                                
+    68 | Active   |  80 | 4.0.4.SNAPSHOT | DataNucleus JDO API plugin             
+    69 | Active   |  80 | 4.0            | DataNucleus Samples : OSGi demo for JDO
+    70 | Active   |  80 | 4.0.5.SNAPSHOT | DataNucleus RDBMS plugin
 
 
