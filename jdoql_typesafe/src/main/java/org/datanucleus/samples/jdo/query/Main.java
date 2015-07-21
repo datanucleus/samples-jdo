@@ -20,6 +20,8 @@ package org.datanucleus.samples.jdo.query;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.jdo.JDOQLTypedQuery;
+import javax.jdo.JDOQLTypedSubquery;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
@@ -27,7 +29,6 @@ import javax.jdo.JDOHelper;
 import javax.jdo.Transaction;
 
 import org.datanucleus.api.jdo.JDOPersistenceManager;
-import org.datanucleus.query.typesafe.*;
 import org.datanucleus.util.*;
 
 public class Main
@@ -102,24 +103,26 @@ public class Main
             // "SELECT FROM Product WHERE this.value < :criticalValue && this.name.startsWith('Wal') 
             //  ORDER BY this.name ASCENDING"
             NucleusLogger.GENERAL.info(">> Query1 : Products with filter, ordering, param and result");
-            TypesafeQuery<Product> tq1 = jdopm.newTypesafeQuery(Product.class);
+            JDOQLTypedQuery<Product> tq1 = pm.newJDOQLTypedQuery(Product.class);
             QProduct cand = QProduct.candidate();
-            tq1.filter(cand.value.lt(tq1.doubleParameter("criticalValue")).and(cand.name.startsWith("Wal")))
-                .orderBy(cand.name.asc()).setParameter("criticalValue", 40.0);
-            List<Object[]> results1 = tq1.executeResultList(true, cand.name, cand.value);
+            tq1.filter(cand.value.lt(tq1.numericParameter("criticalValue")).and(cand.name.startsWith("Wal")))
+                .orderBy(cand.name.asc()).setParameter("criticalValue", 40.0)
+                .result(true, cand.name, cand.value);
+            List<Object> results1 = tq1.executeResultList();
             if (results1 != null)
             {
-                Iterator<Object[]> iter = results1.iterator();
+                Iterator<Object> iter = results1.iterator();
                 while (iter.hasNext())
                 {
-                    NucleusLogger.GENERAL.info(">> Result1 " + StringUtils.objectArrayToString(iter.next()));
+                    Object[] result = (Object[])iter.next();
+                    NucleusLogger.GENERAL.info(">> Result1 " + StringUtils.objectArrayToString(result));
                 }
             }
 
             // Ordering + range
             // "SELECT FROM Product ORDER BY this.name ASCENDING RANGE 0,2"
             NucleusLogger.GENERAL.info(">> Query2 : Products with ordering and range");
-            TypesafeQuery<Product> tq2 = jdopm.newTypesafeQuery(Product.class);
+            JDOQLTypedQuery<Product> tq2 = jdopm.newJDOQLTypedQuery(Product.class);
             cand = QProduct.candidate();
             tq2.orderBy(cand.name.asc()).range(0, 2);
             List<Product> results2 = tq2.executeList();
@@ -135,7 +138,7 @@ public class Main
             // Filter using variable
             // "SELECT FROM Inventory WHERE this.products.contains(var) && var.name.startsWith('Wal')"
             NucleusLogger.GENERAL.info(">> Query3 : Inventory with filter using variable");
-            TypesafeQuery<Inventory> tq3 = jdopm.newTypesafeQuery(Inventory.class);
+            JDOQLTypedQuery<Inventory> tq3 = jdopm.newJDOQLTypedQuery(Inventory.class);
             QProduct var3 = QProduct.variable("var");
             QInventory cand3 = QInventory.candidate();
             tq3.filter(cand3.products.contains(var3).and(var3.name.startsWith("Wal")));
@@ -151,9 +154,9 @@ public class Main
 
             // Subquery
             // "SELECT FROM Product WHERE this.value < (SELECT AVG(p.value) FROM Product p)"
-            TypesafeQuery<Product> tq4 = jdopm.newTypesafeQuery(Product.class);
+            JDOQLTypedQuery<Product> tq4 = jdopm.newJDOQLTypedQuery(Product.class);
             QProduct cand4 = QProduct.candidate();
-            TypesafeSubquery tqsub4 = tq4.subquery(Product.class, "p");
+            JDOQLTypedSubquery<Product> tqsub4 = tq4.subquery(Product.class, "p");
             QProduct candsub4 = QProduct.candidate("p");
             tq4.filter(cand4.value.lt(tqsub4.selectUnique(candsub4.value.avg())));
             List<Product> results4 = tq4.executeList();
@@ -168,7 +171,7 @@ public class Main
 
             // Recursion
             NucleusLogger.GENERAL.info(">> Person recursion query");
-            TypesafeQuery<Person> tq5 = jdopm.newTypesafeQuery(Person.class);
+            JDOQLTypedQuery<Person> tq5 = jdopm.newJDOQLTypedQuery(Person.class);
             QPerson cand5 = QPerson.candidate();
             NucleusLogger.GENERAL.info(">> Person recursion START");
             tq5.filter(cand5.bestFriend.bestFriend.name.startsWith("George"));

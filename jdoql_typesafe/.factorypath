@@ -1,6 +1,4 @@
 <factorypath>
-    <factorypathentry kind="VARJAR" id="M2_REPO/org/datanucleus/datanucleus-jdo-query/3.0.2/datanucleus-jdo-query-3.0.2.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/org/datanucleus/datanucleus-core/3.2.10/datanucleus-core-3.2.10.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/javax/jdo/jdo-api/3.1-rc1/jdo-api-3.1-rc1.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/org/datanucleus/datanucleus-api-jdo/3.2.6/datanucleus-api-jdo-3.2.6.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/datanucleus/datanucleus-jdo-query/4.2.0-m1/datanucleus-jdo-query-4.2.0-m1.jar" enabled="false" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/datanucleus/datanucleus-api-jdo/4.2.0-m1/datanucleus-api-jdo-4.2.0-m1.jar" enabled="false" runInBatchMode="false"/>
 </factorypath>
