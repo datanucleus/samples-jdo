@@ -5,31 +5,31 @@
     <groupId>org.datanucleus</groupId>
     <artifactId>datanucleus-samples-jdo-tutorial</artifactId>
     <packaging>jar</packaging>
-    <version>4.0</version>
+    <version>5.0</version>
     <name>DataNucleus AccessPlatform Tutorial for JDO</name>
     <url>http://www.datanucleus.org</url>
 
     <properties>
         <encoding>UTF-8</encoding>
-        <maven.compiler.source>1.7</maven.compiler.source>
-        <maven.compiler.target>1.7</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-core</artifactId>
-            <version>[4.0.0-release, 4.9)</version>
+            <version>[5.0.0-m1, 5.9)</version>
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-api-jdo</artifactId>
-            <version>[4.2.0-m1, 4.9)</version>
+            <version>[5.0.0-m1, 5.9)</version>
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>javax.jdo</artifactId>
-            <version>[3.2.0-m1, )</version>
+            <version>[3.2.0-m4, )</version>
         </dependency>
         <dependency>
             <groupId>log4j</groupId>
@@ -41,7 +41,7 @@
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-rdbms</artifactId>
-            <version>[4.0.0-release, 4.9)</version>
+            <version>[5.0.0-m1, 5.9)</version>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
@@ -53,7 +53,7 @@
         <!--dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-rdbms</artifactId>
-            <version>[4.0.0-release, 4.9)</version>
+            <version>[5.0.0-m1, 5.9)</version>
         </dependency>
         <dependency>
             <groupId>hsqldb</groupId>
@@ -65,7 +65,7 @@
         <!--dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-rdbms</artifactId>
-            <version>[4.0.0-release, 4.9)</version>
+            <version>[5.0.0-m1, 5.9)</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
@@ -77,7 +77,7 @@
         <!--dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-odf</artifactId>
-            <version>[4.0.0-release, 4.9)</version>
+            <version>[5.0.0-m1, 5.9)</version>
         </dependency>
         <dependency>
             <groupId>org.odftoolkit</groupId>
@@ -94,7 +94,7 @@
         <!--dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-excel</artifactId>
-            <version>[4.0.0-release, 4.9)</version>
+            <version>[5.0.0-m1, 5.9)</version>
         </dependency>
         <dependency>
             <groupId>org.apache.poi</groupId>
@@ -106,7 +106,7 @@
         <!--dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-mongodb</artifactId>
-            <version>[4.0.0-release, 4.9)</version>
+            <version>[5.0.0-m1, 5.9)</version>
         </dependency>
         <dependency>
             <groupId>org.mongodb</groupId>
@@ -118,7 +118,7 @@
         <!--dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-hbase</artifactId>
-            <version>[4.0.0-release, 4.9)</version>
+            <version>[5.0.0-m1, 5.9)</version>
         </dependency>
         <dependency>
             <groupId>org.apache.hadoop</groupId>
@@ -155,7 +155,7 @@
         <!--dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-neo4j</artifactId>
-            <version>[4.0.0-release, 4.9)</version>
+            <version>[5.0.0-m1, 5.9)</version>
         </dependency>
         <dependency>
             <groupId>org.neo4j</groupId>
@@ -167,7 +167,7 @@
         <!--dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-cassandra</artifactId>
-            <version>[4.0.0-release, 4.9)</version>
+            <version>[5.0.0-m1, 5.9)</version>
         </dependency>
         <dependency>
             <groupId>com.datastax.cassandra</groupId>
