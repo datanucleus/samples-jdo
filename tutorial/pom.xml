@@ -111,7 +111,7 @@
         <dependency>
             <groupId>org.mongodb</groupId>
             <artifactId>mongo-java-driver</artifactId>
-            <version>[2.5, 3.0)</version>
+            <version>3.0.0</version>
         </dependency-->
 
         <!-- ENABLE THIS FOR HBase -->
@@ -121,34 +121,14 @@
             <version>[5.0.0-m1, 5.9)</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-core</artifactId>
-            <version>1.0.3</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.codehaus.jackson</groupId>
-                    <artifactId>jackson-mapper-asl</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.codehaus.jackson</groupId>
-                    <artifactId>jackson-core-asl</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
             <groupId>org.apache.hbase</groupId>
             <artifactId>hbase</artifactId>
-            <version>0.94.1</version>
+            <version>1.1.2</version>
         </dependency>
         <dependency>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
             <version>1.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.zookeeper</groupId>
-            <artifactId>zookeeper</artifactId>
-            <version>3.4.3</version>
         </dependency-->
 
         <!-- ENABLE THIS FOR Neo4j -->
@@ -160,7 +140,7 @@
         <dependency>
             <groupId>org.neo4j</groupId>
             <artifactId>neo4j</artifactId>
-            <version>2.1.3</version>
+            <version>2.3.0</version>
         </dependency-->
 
         <!-- ENABLE THIS FOR Cassandra -->
@@ -172,7 +152,7 @@
         <dependency>
             <groupId>com.datastax.cassandra</groupId>
             <artifactId>cassandra-driver-core</artifactId>
-            <version>2.0.1</version>
+            <version>2.1.4</version>
         </dependency-->
     </dependencies>
 
