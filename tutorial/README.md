@@ -9,6 +9,7 @@ You can run this with any supported datastore by simply editing the following fi
 
 __Choosing to NOT invoke the tutorial using the following methods means that you ignore our advice and any problem is yours__.
 
+__Note that for some datastores, you will need to start them up before running the tutorial, and optionally create the schema defined in the persistence properties__.
 
 Maven Instructions
 ==================
