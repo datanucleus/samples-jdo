@@ -23,7 +23,7 @@ In addition each *Supplier* can have many *Customer*s. We demonstrate the classe
 * Managing the Relationship - How we add/remove elements to/from the M-N relation.
 
 
-## The Classes">
+## The Classes
 
 Lets look at our initial classes for the example. We want to represent the relation between a customer and a supplier.
 
@@ -117,7 +117,7 @@ Please refer to the documentation for examples of _application_ and _datastore_ 
 
 
 
-## MetaData for New Schema">
+## MetaData for New Schema
 
 Now that we've decided on our classes and how we want to define their identities we can decide on the precise persistence definition. 
 In this section we'll describe how to persist these objects to a new database schema where we can create new tables and don't need to write to some existing table.
