@@ -4,7 +4,7 @@
                       http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.datanucleus</groupId>
-    <version>4.2</version>
+    <version>5.0</version>
     <artifactId>datanucleus-test-jdo</artifactId>
     <name>DataNucleus Test for JDO</name>
     <description>DataNucleus Test for JDO</description>
