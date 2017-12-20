@@ -12,14 +12,12 @@
         <properties>
             <!-- ENABLE THESE FOR H2 -->
             <property name="javax.jdo.option.ConnectionURL" value="jdbc:h2:mem:nucleus1"/>
-            <property name="javax.jdo.option.ConnectionDriverName" value="org.h2.Driver"/>
             <property name="javax.jdo.option.ConnectionUserName" value="sa"/>
             <property name="javax.jdo.option.ConnectionPassword" value=""/>
             <property name="javax.jdo.option.Mapping" value="h2"/>
 
             <!-- ENABLE THESE FOR HSQLDB -->
             <!--property name="javax.jdo.option.ConnectionURL" value="jdbc:hsqldb:mem:nucleus1"/>
-            <property name="javax.jdo.option.ConnectionDriverName" value="org.hsqldb.jdbcDriver"/>
             <property name="javax.jdo.option.ConnectionUserName" value="sa"/>
             <property name="javax.jdo.option.ConnectionPassword" value=""/>
             <property name="javax.jdo.option.Mapping" value="hsql"/-->
@@ -27,7 +25,6 @@
             <!-- ENABLE THESE FOR MySQL/MariaDB -->
             <!-- Change the "nucleus" to your database name, and the user/password -->
             <!--property name="javax.jdo.option.ConnectionURL" value="jdbc:mysql://127.0.0.1/nucleus?useServerPrepStmts=false"/>
-            <property name="javax.jdo.option.ConnectionDriverName" value="com.mysql.jdbc.Driver"/>
             <property name="javax.jdo.option.ConnectionUserName" value="mysql"/>
             <property name="javax.jdo.option.ConnectionPassword" value=""/>
             <property name="javax.jdo.option.Mapping" value="mysql"/-->
