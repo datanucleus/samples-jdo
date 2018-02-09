@@ -62,7 +62,7 @@ So we define the metadata like this
 ```
 <jdo>
     <package name="mydomain.business">
-        <class name="Customer" detachable="true" table="CUSTOMER">
+        <class name="Customer" detachable="true" table="CUSTOMER" objectid-class="Customer$PK">
             <field name="id" primary-key="true" value-strategy="increment" column="ID"/>
             <field name="name" column="NAME"/>
             <field name="supplierRelations" persistence-modifier="persistent" mapped-by="customer">
@@ -70,7 +70,7 @@ So we define the metadata like this
             </field>
         </class>
 
-        <class name="Supplier" detachable="true" table="SUPPLIER">
+        <class name="Supplier" detachable="true" table="SUPPLIER" objectid-class="Supplier$PK">
             <field name="id" primary-key="true" value-strategy="increment" column="ID"/>
             <field name="name" column="NAME"/>
             <field name="customerRelations" persistence-modifier="persistent" mapped-by="supplier">
