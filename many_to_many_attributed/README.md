@@ -99,8 +99,8 @@ public class BusinessRelation
 
     public static class PK implements Serializable
     {
-        public LongIdentity customer; // Use same name as BusinessRelation field
-        public LongIdentity supplier; // Use same name as BusinessRelation field
+        public Customer.PK customer; // Use same name as field in class
+        public Supplier.PK supplier; // Use same name as field in class
 
         public PK()
         {
@@ -109,8 +109,8 @@ public class BusinessRelation
         public PK(String s)
         {
             StringTokenizer st = new StringTokenizer(s, "::");
-            this.customer = new LongIdentity(Customer.class, st.nextToken());
-            this.supplier = new LongIdentity(Supplier.class, st.nextToken());
+            this.customer = new Customer.PK(st.nextToken());
+            this.supplier = new Supplier.PK(st.nextToken());
         }
 
         public String toString()
