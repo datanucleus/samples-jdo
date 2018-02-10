@@ -10,7 +10,7 @@ The prerequisite is that you need the DataNucleus Maven plugin installed. You ca
 * Run the command: "mvn datanucleus:schema-delete". This deletes the schema
 
 
-# Guide 1
+# Guide 1 (Compound Identity)
 
 DataNucleus provides support for standard JDO M-N relations where we have a relation between, for example, _Customer_ and _Supplier_, 
 where a _Customer_ has many _Suppliers_ and a _Supplier_ has many _Customers_. 
@@ -25,7 +25,9 @@ public class Customer
 
     ...
 }
+```
 
+```
 public class Supplier
 {
     private long id; // PK
@@ -150,7 +152,7 @@ Transaction tx = pm.currentTransaction();
 Object holderId = null;
 try
 {
-    tx1.begin();
+    tx.begin();
 
     Customer cust1 = new Customer("Web design Inc");
     Supplier supp1 = new Supplier("DataNucleus Corporation");
@@ -166,11 +168,11 @@ try
 }
 finally
 {
-    if (tx1.isActive())
+    if (tx.isActive())
     {
-        tx1.rollback();
+        tx.rollback();
     }
-    pm1.close();
+    pm.close();
 }
 ```
 
@@ -179,7 +181,7 @@ We can now utilise the _BusinessRelation_ objects to update the attributes of th
 
 
 
-# Guide 2
+# Guide 2 (Best Practice, using Surrogate Identity)
 
 Clearly the above example requires the definition of primary key classes, and additionally complicates the relationships.
 To change this to use *best practice* you should get rid of the primary key classes, and change the intermediate _BusinessRelation_
