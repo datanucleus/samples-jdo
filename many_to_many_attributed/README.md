@@ -10,7 +10,7 @@ The prerequisite is that you need the DataNucleus Maven plugin installed. You ca
 * Run the command: "mvn datanucleus:schema-delete". This deletes the schema
 
 
-# Guide
+# Guide 1
 
 DataNucleus provides support for standard JDO M-N relations where we have a relation between, for example, _Customer_ and _Supplier_, 
 where a _Customer_ has many _Suppliers_ and a _Supplier_ has many _Customers_. 
@@ -178,3 +178,43 @@ This will now have persisted an entry in table "CUSTOMER", an entry in table "SU
 We can now utilise the _BusinessRelation_ objects to update the attributes of the M-N relation as we wish.
 
 
+
+# Guide 2
+
+Clearly the above example requires the definition of primary key classes, and additionally complicates the relationships.
+To change this to use *best practice* you should get rid of the primary key classes, and change the intermediate _BusinessRelation_
+to use datastore (surrogate) identity. This will now be simpler to understand and run more efficiently.
+
+
+So we define the metadata like this
+
+```
+<jdo>
+    <package name="mydomain.business">
+        <class name="Customer2" detachable="true" table="CUSTOMER2">
+            <field name="id" primary-key="true" value-strategy="increment" column="ID"/>
+            <field name="name" column="NAME"/>
+            <field name="supplierRelations" persistence-modifier="persistent" mapped-by="customer">
+                <collection element-type="BusinessRelation2"/>
+            </field>
+        </class>
+
+        <class name="Supplier2" detachable="true" table="SUPPLIER2">
+            <field name="id" primary-key="true" value-strategy="increment" column="ID"/>
+            <field name="name" column="NAME"/>
+            <field name="customerRelations" persistence-modifier="persistent" mapped-by="supplier">
+                <collection element-type="BusinessRelation2"/>
+            </field>
+        </class>
+
+        <class name="BusinessRelation2" type="datastore" detachable="true" table="BUSINESSRELATION2">
+            <field name="customer" column="CUSTOMER_ID"/>
+            <field name="supplier" column="SUPPLIER_ID"/>
+            <field name="relationLevel" column="RELATION_LEVEL"/>
+            <field name="meetingLocation" column="MEETING_LOCATION"/>
+        </class>
+    </package>
+</jdo>
+```
+
+The persistence code is identical, and the only change to the persistable classes is to remove the PK classes.

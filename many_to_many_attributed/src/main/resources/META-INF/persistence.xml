@@ -6,6 +6,7 @@
 
     <persistence-unit name="MyTest">
         <mapping-file>org/datanucleus/samples/jdo/many_many_attributed/package.jdo</mapping-file>
+        <mapping-file>org/datanucleus/samples/jdo/many_many_attributed2/package.jdo</mapping-file>
         <exclude-unlisted-classes />
         <properties>
             <property name="javax.jdo.option.ConnectionURL" value="jdbc:h2:mem:nucleus"/>
