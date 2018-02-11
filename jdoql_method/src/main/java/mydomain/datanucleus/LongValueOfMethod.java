@@ -22,44 +22,42 @@ import java.util.List;
 
 import org.datanucleus.exceptions.NucleusUserException;
 import org.datanucleus.store.rdbms.mapping.java.JavaTypeMapping;
+import org.datanucleus.store.rdbms.sql.SQLStatement;
 import org.datanucleus.store.rdbms.sql.expression.NumericExpression;
 import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
 import org.datanucleus.store.rdbms.sql.expression.StringExpression;
-import org.datanucleus.store.rdbms.sql.method.AbstractSQLMethod;
+import org.datanucleus.store.rdbms.sql.method.SQLMethod;
 
 /**
  * Expression handler to evaluate Long.valueOf({expression}).
  * Returns a NumericExpression.
  */
-public class LongValueOfMethod extends AbstractSQLMethod
+public class LongValueOfMethod implements SQLMethod
 {
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.sql.method.SQLMethod#getExpression(org.datanucleus.store.rdbms.sql.expression.SQLExpression, java.util.List)
-     */
-    public SQLExpression getExpression(SQLExpression ignore, List args)
+    public SQLExpression getExpression(SQLStatement stmt, SQLExpression expr, List<SQLExpression> args)
     {
         if (args == null || args.size() == 0)
         {
             throw new NucleusUserException("Cannot invoke Long.valueOf without an argument");
         }
 
-        SQLExpression expr = (SQLExpression)args.get(0);
-        if (expr == null)
+        SQLExpression argExpr = (SQLExpression)args.get(0);
+        if (argExpr == null)
         {
             throw new NucleusUserException("Cannot invoke Long.valueOf with null argument");
         }
-        if (expr instanceof StringExpression)
+        if (argExpr instanceof StringExpression)
         {
-            JavaTypeMapping m = getMappingForClass(long.class);
+            JavaTypeMapping m = stmt.getSQLExpressionFactory().getMappingForType(long.class, true);
             List castTypes = new ArrayList();
             castTypes.add("INTEGER");
             List castArgs = new ArrayList();
-            castArgs.add(expr);
+            castArgs.add(argExpr);
             return new NumericExpression(stmt, m, "CAST", castArgs, castTypes);
         }
         else
         {
-            throw new NucleusUserException("Argument for Long.valueOf has to be a StringExpression/StringLiteral - invalid to pass " + expr);
+            throw new NucleusUserException("Argument for Long.valueOf has to be a StringExpression/StringLiteral - invalid to pass " + argExpr);
         }
     }
 }
