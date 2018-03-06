@@ -1,13 +1,9 @@
-test-jdo
-========
+JDO Array using Postgresql array column
+=======================================
 
-Template project for any user testcase using JDO.
-To create a DataNucleus test simply fork this project, and add/edit as 
-necessary to add your model and persistence commands. The files that you'll likely need to edit are
+Sample showing how to define an array to be stored into a PostgreSQL "INT ARRAY" column
 
-* <a href="https://github.com/datanucleus/test-jdo/tree/master/src/main/java/mydomain/model">src/main/java/mydomain/model/</a>   **[Put your model classes here]**
-* <a href="https://github.com/datanucleus/test-jdo/blob/master/src/main/resources/META-INF/persistence.xml">src/main/resources/META-INF/persistence.xml</a>   **[Put your datastore details in here]**
-* <a href="https://github.com/datanucleus/test-jdo/blob/master/src/test/java/org/datanucleus/test/SimpleTest.java">src/test/java/org/datanucleus/test/SimpleTest.java</a>   **[Edit this if a single-thread test is required]**
-* <a href="https://github.com/datanucleus/test-jdo/blob/master/src/test/java/org/datanucleus/test/MultithreadTest.java">src/test/java/org/datanucleus/test/MultithreadTest.java</a>   **[Edit this if a multi-thread test is required]**
+In this example we have a class [Person](https://github.com/datanucleus/samples-jdo/blob/master/array_postgresql/src/main/java/mydomain/model/Person.java) with an _int[]_ field. 
 
-To run this, simply type "mvn clean compile test"
+We annotate the column to use _jdbcType_ of "ARRAY", and _sqlType_ of "INT
+ARRAY".
