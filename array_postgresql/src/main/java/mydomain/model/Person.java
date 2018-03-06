@@ -10,6 +10,10 @@ public class Person
 
     String name;
 
+    // Note that in DN up to 5.1.7 you had to specify the column in the ELEMENT, like this (commented out)
+    //@Element(columns={@Column(name="PERMISSIONS", jdbcType="ARRAY", sqlType="INT ARRAY")})
+
+    // In DN > 5.1.7 you can do this
     @Column(name="PERMISSIONS", jdbcType="ARRAY", sqlType="INT ARRAY")
     int[] permissions;
 
