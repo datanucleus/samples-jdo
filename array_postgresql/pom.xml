@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.datanucleus</groupId>
+    <version>5.1</version>
+    <artifactId>datanucleus-test-jdo</artifactId>
+    <name>DataNucleus Test for JDO</name>
+    <description>DataNucleus Test for JDO</description>
+
+    <properties>
+        <javax_jdo.ver>3.2.0-m7</javax_jdo.ver>
+        <dn.core.min.ver>5.0.1</dn.core.min.ver>
+        <dn.core.max.ver>5.1.99</dn.core.max.ver>
+        <dn.api_jdo.min.ver>5.0.1</dn.api_jdo.min.ver>
+        <dn.api_jdo.max.ver>5.1.99</dn.api_jdo.max.ver>
+        <dn.datastore.min.ver>5.0.1</dn.datastore.min.ver>
+        <dn.datastore.max.ver>5.1.99</dn.datastore.max.ver>
+        <dn.maven.plugin.ver>5.0.2</dn.maven.plugin.ver>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.datanucleus</groupId>
+            <artifactId>javax.jdo</artifactId>
+            <version>${javax_jdo.ver}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.datanucleus</groupId>
+            <artifactId>datanucleus-core</artifactId>
+            <version>[${dn.core.min.ver}, ${dn.core.max.ver})</version>
+        </dependency>
+        <dependency>
+            <groupId>org.datanucleus</groupId>
+            <artifactId>datanucleus-api-jdo</artifactId>
+            <version>[${dn.api_jdo.min.ver}, ${dn.api_jdo.max.ver})</version>
+        </dependency>
+        <!-- Change to the datanucleus-{datastore} plugin required -->
+        <dependency>
+            <groupId>org.datanucleus</groupId>
+            <artifactId>datanucleus-rdbms</artifactId>
+            <version>[${dn.datastore.min.ver}, ${dn.datastore.max.ver})</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.4.1211</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.9</version>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.8</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>${basedir}</directory>
+                            <includes>
+                                <include>*.log</include>
+                                <include>test.xls</include>
+                                <include>test.ods</include>
+                                <include>test.ooxml</include>
+                                <include>test.xml</include>
+                            </includes>
+                        </fileset>
+                        <fileset>
+                            <directory>${basedir}/testDB</directory>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <encoding>ISO-8859-1</encoding>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.datanucleus</groupId>
+                <artifactId>datanucleus-maven-plugin</artifactId>
+                <version>${dn.maven.plugin.ver}</version>
+                <configuration>
+                    <api>JDO</api>
+                    <persistenceUnitName>MyTest</persistenceUnitName>
+                    <fork>false</fork>
+                    <verbose>false</verbose>
+                    <log4jConfiguration>${basedir}/src/main/resources/log4j.properties</log4jConfiguration>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>enhance</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.12.2</version>
+                <configuration>
+                    <includes>
+                        <include>**/*Test.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
