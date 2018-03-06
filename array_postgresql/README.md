@@ -24,3 +24,11 @@ _INSERT INTO person ("name",permissions,id) VALUES (<'First'>,<{"1","2","0"}>,<1
 and is retrieved using this SQL
 
 _SELECT a0.permissions FROM person a0 WHERE a0.id = <1>_
+
+
+NOTE: In DN up to v5.1.7 you would have to annotate the _element_ column, like
+this, since it did not support direct annotation of the column for an array
+
+> @Element(columns={@Column(name="PERMISSIONS", jdbcType="ARRAY", sqlType="INT ARRAY")})
+> int[] permissions;
+
