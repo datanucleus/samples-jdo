@@ -90,6 +90,7 @@ public class Main
         }
 
         System.out.println("");
+        pmf.close();
         System.out.println("End of Sample");
     }
 }
