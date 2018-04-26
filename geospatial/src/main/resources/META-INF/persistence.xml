@@ -5,7 +5,7 @@
     version="1.0">
 
     <persistence-unit name="MyTest">
-        <mapping-file>org/datanucleus/samples/jdo/spatial/package.jdo</mapping-file>
+        <mapping-file>org/datanucleus/samples/jdo/geospatial/package.jdo</mapping-file>
         <exclude-unlisted-classes />
         <properties>
             <property name="javax.jdo.option.ConnectionURL" value="jdbc:mariadb://127.0.0.1/nucleus"/>
@@ -17,7 +17,7 @@
     </persistence-unit>
 
     <persistence-unit name="MyTest-postgresql">
-        <mapping-file>org/datanucleus/samples/jdo/spatial/package.jdo</mapping-file>
+        <mapping-file>org/datanucleus/samples/jdo/geospatial/package.jdo</mapping-file>
         <exclude-unlisted-classes />
         <properties>
             <property name="javax.jdo.option.ConnectionURL" value="jdbc:postgresql:nucleus"/>

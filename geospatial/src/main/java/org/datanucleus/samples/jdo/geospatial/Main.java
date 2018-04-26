@@ -1,4 +1,4 @@
-package org.datanucleus.samples.jdo.spatial;
+package org.datanucleus.samples.jdo.geospatial;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -21,8 +21,8 @@ public class Main
         // Create a PersistenceManagerFactory for this datastore
         PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("MyTest");
 
-        System.out.println("DataNucleus JDO Spatial Sample");
-        System.out.println("==============================");
+        System.out.println("DataNucleus JDO Geospatial Sample");
+        System.out.println("=================================");
 
         // Persist several Position objects
         PersistenceManager pm = pmf.getPersistenceManager();

@@ -1,4 +1,4 @@
-package org.datanucleus.samples.jdo.spatial;
+package org.datanucleus.samples.jdo.geospatial;
 
 import org.postgis.Point;
 
