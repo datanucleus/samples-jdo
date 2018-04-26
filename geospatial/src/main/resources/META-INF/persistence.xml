@@ -8,8 +8,7 @@
         <mapping-file>org/datanucleus/samples/jdo/spatial/package.jdo</mapping-file>
         <exclude-unlisted-classes />
         <properties>
-            <property name="javax.jdo.option.ConnectionURL" value="jdbc:mysql://127.0.0.1/nucleus"/>
-            <property name="javax.jdo.option.ConnectionDriverName" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.jdo.option.ConnectionURL" value="jdbc:mariadb://127.0.0.1/nucleus"/>
             <property name="javax.jdo.option.ConnectionUserName" value="mysql"/>
             <property name="javax.jdo.option.ConnectionPassword" value=""/>
 
@@ -22,7 +21,6 @@
         <exclude-unlisted-classes />
         <properties>
             <property name="javax.jdo.option.ConnectionURL" value="jdbc:postgresql:nucleus"/>
-            <property name="javax.jdo.option.ConnectionDriverName" value="org.postgresql.Driver"/>
             <property name="javax.jdo.option.ConnectionUserName" value="postgres"/>
             <property name="javax.jdo.option.ConnectionPassword" value=""/>
 

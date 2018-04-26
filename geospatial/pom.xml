@@ -48,10 +48,11 @@
         </dependency>
 
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.0.5</version>
+            <groupId>org.mariadb.jdbc</groupId>
+            <artifactId>mariadb-java-client</artifactId>
+            <version>1.1.9</version>
         </dependency>
+
         <dependency>
             <groupId>com.vividsolutions</groupId>
             <artifactId>jts</artifactId>
@@ -64,6 +65,7 @@
             <version>1.12</version>
             <optional>true</optional>
         </dependency>
+
         <dependency>
             <groupId>postgresql</groupId>
             <artifactId>postgresql</artifactId>
