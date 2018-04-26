@@ -132,15 +132,12 @@ public class Main
             tx.begin();
 
             Position[] sps = new Position[3];
-            Point[] points = new Point[3];
-            points[0] = new Point("SRID=4326;POINT(5 0)");
-            points[1] = new Point("SRID=4326;POINT(10 0)");
-            points[2] = new Point("SRID=4326;POINT(20 0)");
-            sps[0] = new Position("market",points[0]);
-            sps[1] = new Position("rent-a-car",points[1]);
-            sps[2] = new Position("pizza shop",points[2]);
+            sps[0] = new Position("market", new Point("SRID=4326;POINT(5 0)"));
+            sps[1] = new Position("rent-a-car", new Point("SRID=4326;POINT(10 0)"));
+            sps[2] = new Position("pizza shop", new Point("SRID=4326;POINT(20 0)"));
+
             Point homepoint = new Point("SRID=4326;POINT(0 0)");
-            Position home = new Position("home",homepoint);
+            Position home = new Position("home", homepoint);
 
             System.out.println("Persisting spatial data...");
             System.out.println(home);

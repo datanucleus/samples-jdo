@@ -33,15 +33,11 @@ public class Main
             tx.begin();
 
             Position[] sps = new Position[3];
-            Point[] points = new Point[3];
-            points[0] = new Point("SRID=4326;POINT(5 0)");
-            points[1] = new Point("SRID=4326;POINT(10 0)");
-            points[2] = new Point("SRID=4326;POINT(20 0)");
-            sps[0] = new Position("market",points[0]);
-            sps[1] = new Position("rent-a-car",points[1]);
-            sps[2] = new Position("pizza shop",points[2]);
-            Point homepoint = new Point("SRID=4326;POINT(0 0)");
-            Position home = new Position("home",homepoint);
+            sps[0] = new Position("market", new Point("SRID=4326;POINT(5 0)"));
+            sps[1] = new Position("rent-a-car", new Point("SRID=4326;POINT(10 0)"));
+            sps[2] = new Position("pizza shop", new Point("SRID=4326;POINT(20 0)"));
+
+            Position home = new Position("home", new Point("SRID=4326;POINT(0 0)"));
 
             System.out.println("Persisting spatial data...");
             System.out.println(home);
@@ -61,8 +57,7 @@ public class Main
             System.out.println("Retrieving position where X position is > 10 and Y position is 0 ... Found:");
 
             // TODO Make this more elaborate, demonstrating more of the power of spatial method querying
-            Query query = pm.newQuery(Position.class,
-                "name != 'home' && (this.point.getX() > 10) && (this.point.getY() == 0)");
+            Query query = pm.newQuery(Position.class, "name != 'home' && (this.point.getX() > 10) && (this.point.getY() == 0)");
             List list = (List) query.execute();
             for( int i=0; i<list.size(); i++)
             {
