@@ -122,5 +122,50 @@ public class Main
         System.out.println(">> Customer2 has " + cust2.getNumberOfRelations() + " relations");
         System.out.println(">> Supplier1 has " + supp1.getNumberOfRelations() + " relations");
         System.out.println(">> Supplier2 has " + supp2.getNumberOfRelations() + " relations");
+        
+        // Removing the relationship
+        System.out.println(">> Now removing relationship between Customer1 and Supplier2");
+
+        // Remove the relation customer1 uses supplier2
+        BusinessRelation rel = (BusinessRelation)pm.getObjectById(rel1.getId());
+        cust1.removeRelation(rel);
+        supp2.removeRelation(rel);
+
+        pm = pmf.getPersistenceManager();
+        tx = pm.currentTransaction();
+        pm.getFetchPlan().setGroup("all");
+        try
+        {
+            tx.begin();
+
+            // Reattach the changed objects
+            pm.makePersistent(rel);
+            
+            // We have javax.jdo.option.DetachAllOnCommit set, so all get (re)detached at this point
+            tx.commit();
+            // After commit, rel object will automatically be deleted since the relationship has been 
+            // removed from the relating objects, customer1 and supplier2
+        }
+        catch (Exception e)
+        {
+            NucleusLogger.GENERAL.error(">> Exception in reattach", e);
+            System.exit(3);
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+        
+        // Print out the results
+        System.out.println(">> Customer1 has " + cust1.getNumberOfRelations() + " relations");
+        System.out.println(">> Customer2 has " + cust2.getNumberOfRelations() + " relations");
+        System.out.println(">> Supplier1 has " + supp1.getNumberOfRelations() + " relations");
+        System.out.println(">> Supplier2 has " + supp2.getNumberOfRelations() + " relations");
+        
+
     }
 }
