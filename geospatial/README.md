@@ -1,4 +1,4 @@
-# Geospatial
+# Geospatial Sample for JDO
 
 
 This requires the DataNucleus Maven plugin. You can download this plugin from the DataNucleus downloads area.
@@ -17,7 +17,7 @@ This requires the DataNucleus Maven plugin. You can download this plugin from th
 _dataNucleus-geospatial_ allows the use of DataNucleus as persistence layer for geospatial applications in an environment that supports the OGC SFA specification. 
 It allows the persistence of the Java geometry types from the JTS topology suite as well as those from the PostGIS project.
 
-In this tutorial, we perform the basic persistence operations over geospatial types using MySQL/MariaDB and Postgis products.
+In this tutorial, we perform the basic persistence operations over geospatial types using MariaDB (or MySQL) and Postgis products.
 
 * Step 1 : Install the database server and geospatial extensions.
 * Step 2 : Download DataNucleus and PostGis libraries.
@@ -29,7 +29,7 @@ In this tutorial, we perform the basic persistence operations over geospatial ty
 
 ## Step 1 : Install the database server and geospatial extensions
 
-Download MySQL/MariaDB database and PostGIS. Install MySQL/MariaDB and PostGis. 
+Download MariaDB database and PostGIS. Install MariaDB and PostGis. 
 During PostGis installation, you will be asked to select the database schema where the geospatial extensions will be enabled. 
 You will use this schema to run the tutorial application.
 
@@ -97,38 +97,9 @@ These settings specifies the format of the geospatial data. _SRID_ stands for sp
 
 ## Step 4 : Design and implement the persistent code
 
-In this tutorial, we query for all locations where the X coordinate is greater than 10 and Y coordinate is 0.
+In this tutorial, we firstly persist objects that have a geospatial field.
 
 ```
-package org.datanucleus.samples.spatial;
-
-import java.sql.SQLException;
-import java.util.List;
-
-import javax.jdo.JDOHelper;
-import javax.jdo.PersistenceManager;
-import javax.jdo.PersistenceManagerFactory;
-import javax.jdo.Query;
-import javax.jdo.Transaction;
-
-import org.postgis.Point;
-
-public class Main
-{
-    public static void main(String args[]) throws SQLException
-    {
-        // Create a PersistenceManagerFactory for this datastore
-        PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("MyUnit");
-
-        System.out.println("DataNucleus JDO Spatial Sample");
-        System.out.println("==============================");
-
-        // Persistence of a Product and a Book.
-        PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx=pm.currentTransaction();
-        try
-        {
-            //create objects
             tx.begin();
 
             Position[] sps = new Position[3];
@@ -146,44 +117,33 @@ public class Main
             System.out.println(sps[2]);
             System.out.println("");
 
-            pm.makePersistentAll(sps);
+            pm.makePersistent(sps);
             pm.makePersistent(home);
 
             tx.commit();
             
-            //query for the distance
+```
+
+We now query for all locations that are within a specified distance of the "home".
+
+```
             tx.begin();
 
             Double distance = new Double(12.0);
-            System.out.println("Retriving position where distance to home is less than "+distance+" ... Found:");
-            
+            System.out.println("Retrieving Positions where distance to home is less than \"" + distance + "\" ... Found:");
+
+            // TODO Make this more elaborate, demonstrating more of the power of spatial method querying
             Query query = pm.newQuery(Position.class, "name != 'home' && Spatial.distance(this.point, :homepoint) < :distance");
             List list = (List) query.execute(homepoint, distance);
-            for( int i=0; i<list.size(); i++)
+            for (int i=0; i<list.size(); i++)
             {
                 System.out.println(list.get(i));
             }
-            //clean up database.. just for fun :)
-            pm.newQuery(Position.class).deletePersistentAll();
 
             tx.commit();
-        }
-        finally
-        {
-            if (tx.isActive())
-            {
-                tx.rollback();
-            }
-            pm.close();
-        }
-
-        System.out.println("");
-        System.out.println("End of Tutorial");
-    }
-}
 ```
 
-We define a `persistence.xml` file with connection properties to MySQL
+We define a `persistence.xml` file with connection properties to MariaDB
 
 ```
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -196,8 +156,7 @@ We define a `persistence.xml` file with connection properties to MySQL
         <mapping-file>org/datanucleus/samples/jdo/spatial/package.jdo</mapping-file>
         <exclude-unlisted-classes />
         <properties>
-            <property name="javax.jdo.option.ConnectionURL" value="jdbc:mysql://127.0.0.1/nucleus"/>
-            <property name="javax.jdo.option.ConnectionDriverName" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.jdo.option.ConnectionURL" value="jdbc:mariadb://127.0.0.1/nucleus"/>
             <property name="javax.jdo.option.ConnectionUserName" value="mysql"/>
             <property name="javax.jdo.option.ConnectionPassword" value=""/>
 
@@ -213,7 +172,7 @@ We define a `persistence.xml` file with connection properties to MySQL
 ## Step 5 : Run your application
 
 Before running the application, you must enhance the persistent classes.
-Finally, configure the application classpath with the DataNucleus Core, DataNucleus RDBMS, DataNucleus Geospatial, JDO, MySQL and PostGis libraries 
+Finally, configure the application classpath with the DataNucleus Core, DataNucleus RDBMS, DataNucleus Geospatial, JDO, MariaDB and PostGis libraries 
 and run the application as any other java application.
 
 The output for the application is:
@@ -227,8 +186,9 @@ Persisting spatial data...
 [name] rent-a-car [point] SRID=4326;POINT(10 0)
 [name] pizza shop [point] SRID=4326;POINT(20 0)
 
-Retrieving position where X position is > 10 and Y position is 0 ... Found:
-[name] pizza shop [point] SRID=4326;POINT(20 0)
+Retrieving Positions where distance to home is less than "12.0" ... Found:
+[name] market [point] SRID=4326;POINT(5 0)
+[name] rent-a-car [point] SRID=4326;POINT(10 0)
 
 End of Sample
 ```
