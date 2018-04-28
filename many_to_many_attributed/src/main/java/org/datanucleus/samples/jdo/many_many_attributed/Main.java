@@ -143,9 +143,7 @@ public class Main
             
             // We have javax.jdo.option.DetachAllOnCommit set, so all get (re)detached at this point
             tx.commit();
-            // After commit, rel object will automatically be deleted since the relationship has been 
-            // removed from the relating objects, customer1 and supplier2
-        }
+         }
         catch (Exception e)
         {
             NucleusLogger.GENERAL.error(">> Exception in reattach", e);
