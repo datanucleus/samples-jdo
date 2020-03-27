@@ -9,26 +9,32 @@
     <name>DataNucleus AccessPlatform JDOQL Method Sample</name>
     <url>http://www.datanucleus.org</url>
 
+    <properties>
+        <encoding>UTF-8</encoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+        
     <dependencies>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-core</artifactId>
-            <version>[5.0.0-m1, 5.9)</version>
+            <version>[5.2.0-release, 5.9)</version>
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-api-jdo</artifactId>
-            <version>[5.0.0-m1, 5.9)</version>
+            <version>[5.2.0-release, 5.9)</version>
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-rdbms</artifactId>
-            <version>[5.0.0-m1, 5.9)</version>
+            <version>[5.2.0-release, 5.9)</version>
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>javax.jdo</artifactId>
-            <version>[3.2.0-m6, )</version>
+            <version>[3.2.0-m13, )</version>
         </dependency>
 
         <dependency>
@@ -96,15 +102,11 @@
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.3.2</version>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.datanucleus</groupId>
                 <artifactId>datanucleus-maven-plugin</artifactId>
-                <version>5.0.2</version>
+                <version>5.2.1</version>
                 <configuration>
                     <persistenceUnitName>MyTest</persistenceUnitName>
                     <log4jConfiguration>${basedir}/src/test/resources/log4j.properties</log4jConfiguration>
