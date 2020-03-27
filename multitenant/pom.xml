@@ -9,22 +9,28 @@
     <name>DataNucleus Multitenancy Sample for JDO</name>
     <description>DataNucleus Multitenancy Sample for JDO</description>
 
+    <properties>
+        <encoding>UTF-8</encoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>javax.jdo</artifactId>
-            <version>[3.2.0-m6, )</version>
+            <version>[3.2.0-m13, 3.9)</version>
         </dependency>
 
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-core</artifactId>
-            <version>[5.0.1, )</version>
+            <version>[5.2.0-release, 5.9)</version>
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-api-jdo</artifactId>
-            <version>[5.0.1, )</version>
+            <version>[5.2.0-release, 5.9)</version>
         </dependency>
 
         <dependency>
@@ -42,7 +48,7 @@
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-rdbms</artifactId>
-            <version>[5.0.1, )</version>
+            <version>[5.2.0-release,5.9)</version>
         </dependency>
 
         <!-- Change to the datastore driver required for your datastore -->
@@ -80,17 +86,12 @@
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.3.2</version>
-                <configuration>
-                    <encoding>ISO-8859-1</encoding>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
             </plugin>
 
             <plugin>
                 <groupId>org.datanucleus</groupId>
                 <artifactId>datanucleus-maven-plugin</artifactId>
-                <version>5.0.2</version>
+                <version>5.2.1</version>
                 <configuration>
                     <api>JDO</api>
                     <persistenceUnitName>MyTest</persistenceUnitName>

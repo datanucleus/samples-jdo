@@ -10,14 +10,18 @@
     <description>DataNucleus Test for JDO</description>
 
     <properties>
+        <encoding>UTF-8</encoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
         <javax_jdo.ver>3.2.0-m7</javax_jdo.ver>
-        <dn.core.min.ver>5.0.1</dn.core.min.ver>
-        <dn.core.max.ver>5.1.99</dn.core.max.ver>
-        <dn.api_jdo.min.ver>5.0.1</dn.api_jdo.min.ver>
-        <dn.api_jdo.max.ver>5.1.99</dn.api_jdo.max.ver>
-        <dn.datastore.min.ver>5.0.1</dn.datastore.min.ver>
-        <dn.datastore.max.ver>5.1.99</dn.datastore.max.ver>
-        <dn.maven.plugin.ver>5.0.2</dn.maven.plugin.ver>
+        <dn.core.min.ver>5.2.0-release</dn.core.min.ver>
+        <dn.core.max.ver>5.9</dn.core.max.ver>
+        <dn.api_jdo.min.ver>5.2.0-release</dn.api_jdo.min.ver>
+        <dn.api_jdo.max.ver>5.9</dn.api_jdo.max.ver>
+        <dn.datastore.min.ver>5.2.0-release</dn.datastore.min.ver>
+        <dn.datastore.max.ver>5.9</dn.datastore.max.ver>
+        <dn.maven.plugin.ver>5.2.1</dn.maven.plugin.ver>
     </properties>
 
     <dependencies>
@@ -89,11 +93,6 @@
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.3.2</version>
-                <configuration>
-                    <encoding>ISO-8859-1</encoding>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
             </plugin>
 
             <plugin>
