@@ -4,24 +4,24 @@
                       http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.datanucleus</groupId>
-    <version>5.1</version>
+    <version>6.0</version>
     <artifactId>datanucleus-sample-jdo</artifactId>
     <name>DataNucleus Sample for JDO</name>
     <description>DataNucleus Sample for JDO</description>
 
     <properties>
         <encoding>UTF-8</encoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
 
         <javax_jdo.ver>3.2.0-m13</javax_jdo.ver>
-        <dn.core.min.ver>5.2.0-release</dn.core.min.ver>
-        <dn.core.max.ver>5.9</dn.core.max.ver>
-        <dn.api_jdo.min.ver>5.2.0-release</dn.api_jdo.min.ver>
-        <dn.api_jdo.max.ver>5.9</dn.api_jdo.max.ver>
-        <dn.datastore.min.ver>5.2.0-release</dn.datastore.min.ver>
-        <dn.datastore.max.ver>5.9</dn.datastore.max.ver>
-        <dn.maven.plugin.ver>5.2.1</dn.maven.plugin.ver>
+        <dn.core.min.ver>6.0.0-m1</dn.core.min.ver>
+        <dn.core.max.ver>6.9</dn.core.max.ver>
+        <dn.api_jdo.min.ver>6.0.0-m1</dn.api_jdo.min.ver>
+        <dn.api_jdo.max.ver>6.9</dn.api_jdo.max.ver>
+        <dn.datastore.min.ver>6.0.0-m1</dn.datastore.min.ver>
+        <dn.datastore.max.ver>6.9</dn.datastore.max.ver>
+        <dn.maven.plugin.ver>6.0.0-m1</dn.maven.plugin.ver>
     </properties>
 
     <dependencies>
@@ -70,7 +70,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-clean-plugin</artifactId>
-                <version>2.5</version>
+                <version>3.1.0</version>
                 <configuration>
                     <filesets>
                         <fileset>
@@ -92,7 +92,7 @@
 
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
+                <version>3.8.0</version>
             </plugin>
 
             <plugin>

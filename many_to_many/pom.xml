@@ -5,31 +5,31 @@
     <groupId>org.datanucleus</groupId>
     <artifactId>datanucleus-samples-jdo-many_many</artifactId>
     <packaging>jar</packaging>
-    <version>4.0</version>
+    <version>6.0</version>
     <name>DataNucleus AccessPlatform JDO Many-to-Many Relation Sample</name>
     <url>http://www.datanucleus.org</url>
 
     <properties>
         <encoding>UTF-8</encoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-core</artifactId>
-            <version>[5.2.0-release, 5.9)</version>
+            <version>[6.0.0-m1, 6.9)</version>
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-api-jdo</artifactId>
-            <version>[5.2.0-release, 5.9)</version>
+            <version>[6.0.0-m1, 6.9)</version>
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-rdbms</artifactId>
-            <version>[5.2.0-release, 5.9)</version>
+            <version>[6.0.0-m1, 6.9)</version>
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
@@ -62,7 +62,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-clean-plugin</artifactId>
-                <version>2.4.1</version>
+                <version>3.1.0</version>
                 <configuration>
                     <filesets>
                         <fileset>
@@ -78,12 +78,12 @@
 
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
+                <version>3.8.0</version>
             </plugin>
             <plugin>
                 <groupId>org.datanucleus</groupId>
                 <artifactId>datanucleus-maven-plugin</artifactId>
-                <version>5.2.1</version>
+                <version>6.0.0-m1</version>
                 <configuration>
                     <persistenceUnitName>MyTest</persistenceUnitName>
                     <log4jConfiguration>${basedir}/src/main/resources/log4j.properties</log4jConfiguration>
