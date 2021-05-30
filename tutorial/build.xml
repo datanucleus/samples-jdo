@@ -11,7 +11,7 @@ tutorial build
     <property name="project.build.debug" value="on"/>
     <property name="Name" value="tutorial"/>
     <property name="name" value="${Name}"/>
-    <property name="version" value="4.0"/>
+    <property name="version" value="6.0"/>
 
     <!-- project workspace directories -->
     <property name="java.dir" value="src/main/java"/>
