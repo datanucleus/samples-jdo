@@ -40,7 +40,7 @@
             <property name="javax.jdo.option.Mapping" value="excel"/-->
 
             <!-- ENABLE THESE FOR MONGODB -->
-            <!--property name="javax.jdo.option.ConnectionURL" value="mongodb:/nucleus1"/>
+            <!--property name="javax.jdo.option.ConnectionURL" value="mongodb://localhost/nucleus1"/>
             <property name="javax.jdo.option.Mapping" value="mongodb"/-->
 
             <!-- ENABLE THESE FOR HBASE -->
